@@ -1,0 +1,39 @@
+Option Explicit
+
+Dim hours, timeFilter, service, events, eventItem, count
+
+If WScript.Arguments.Count <> 1 Then
+    WScript.Echo "Usage: cscript //nologo CountFailedLogons.vbs <hours 1-168>"
+    WScript.Quit 2
+End If
+If Not ParseHours(WScript.Arguments(0), hours) Then
+    WScript.Echo "Hours must be a whole number from 1 to 168."
+    WScript.Quit 2
+End If
+
+Set timeFilter = CreateObject("WbemScripting.SWbemDateTime")
+timeFilter.SetVarDate DateAdd("h", -hours, Now), True
+Set service = GetObject("winmgmts:\\.\root\cimv2")
+Set events = service.ExecQuery( _
+    "SELECT EventCode FROM Win32_NTLogEvent WHERE Logfile='Security' " & _
+    "AND EventCode=4625 AND TimeGenerated >= '" & timeFilter.Value & "'")
+
+count = 0
+For Each eventItem In events
+    count = count + 1
+Next
+WScript.Echo "Failed logon events (4625) in the last " & hours & _
+    " hours: " & count
+WScript.Echo "Only a count is displayed; account and network details are omitted."
+
+Function ParseHours(text, value)
+    Dim i, ch
+    ParseHours = False
+    If Len(text) = 0 Or Len(text) > 3 Then Exit Function
+    For i = 1 To Len(text)
+        ch = Mid(text, i, 1)
+        If InStr(1, "0123456789", ch, vbBinaryCompare) = 0 Then Exit Function
+    Next
+    value = CLng(text)
+    ParseHours = (value >= 1 And value <= 168)
+End Function
