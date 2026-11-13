@@ -11,8 +11,7 @@ cscript //nologo GetProcessMemoryUsage.vbs
 
 The scripts list process names and PIDs, check for a process by exact name,
 and report working-set and virtual-memory sizes. They do not terminate,
-launch, modify, or remotely control processes, and they do not send or save
-the collected information.
+modify, or remotely control processes. They do not upload information.
 
 Process termination, bulk termination, automatic restart or scheduling,
 arbitrary command execution, elevation, remote control, software
@@ -24,6 +23,12 @@ exceed 100% across cores) and process creation times. Service exit codes and
 pending states can also be inspected. `ExportServiceInventory.vbs
 <new-csv-path>` writes only a local CSV report and refuses to overwrite an
 existing file; it does not change service configuration.
+
+Other individual queries report process owners, image paths, parent PIDs,
+thread/handle counts, priorities, sessions, I/O counters, CPU times, memory
+peaks/private memory, service-to-process mappings, descriptions, and service
+dependency references. These details can expose local usernames, paths, or
+session information; use them only on systems you administer.
 
 ## Windows service information scripts
 
