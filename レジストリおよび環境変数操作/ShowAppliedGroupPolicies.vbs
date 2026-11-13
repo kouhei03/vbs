@@ -1,0 +1,19 @@
+' 解説: 明示的な変数宣言を必須にします。
+Option Explicit
+' 解説: Windows Script HostのExecオブジェクトと実行結果ストリームを保持します。
+Dim shell, process, line
+Set shell = CreateObject("WScript.Shell")
+' 解説: gpresultの読み取り専用レポートを実行し、グループポリシー更新は行いません。
+Set process = shell.Exec("gpresult.exe /scope computer /r")
+Do While Not process.StdOut.AtEndOfStream
+    line = process.StdOut.ReadLine
+    WScript.Echo line
+Loop
+Do While Not process.StdErr.AtEndOfStream
+    line = process.StdErr.ReadLine
+    WScript.Echo "ERROR: " & line
+Loop
+If process.ExitCode <> 0 Then
+    WScript.Echo "gpresult returned exit code " & process.ExitCode
+    WScript.Quit process.ExitCode
+End If
