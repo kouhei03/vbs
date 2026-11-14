@@ -3,7 +3,7 @@
 ' 処理結果: NIC電源管理プロパティ確認。処理結果や状態はコンソールに表示されます。
 ' コード解説: WMIの照会結果を列挙し、条件に一致する情報を処理します。
 Option Explicit
-Dim service, adapters, adapter, property
+Dim service, adapters, adapter
 Set service = GetObject("winmgmts:\\.\root\cimv2")
 ' 主処理: WMIの照会結果を処理します。
 Set adapters = service.ExecQuery("SELECT Name, PNPDeviceID, PowerManagementSupported, PowerManagementCapabilities FROM Win32_NetworkAdapter WHERE PhysicalAdapter=True")
