@@ -6,7 +6,7 @@
 
 Option Explicit
 
-Dim logName, eventId, hours, service, events, eventItem, filter, count
+Dim logName, eventId, hours, service, events, eventItem, dateFilter, count
 ' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 3 Then
     WScript.Echo "Usage: cscript //nologo 142_FilterEventsById.vbs <System|Application|Security> <event-id> <hours 1-168>"
@@ -26,15 +26,15 @@ If Not ParseInteger(WScript.Arguments(2), 1, 168, hours) Then
     WScript.Quit 2
 End If
 
-Set filter = CreateObject("WbemScripting.SWbemDateTime")
+Set dateFilter = CreateObject("WbemScripting.SWbemDateTime")
 ' [処理解説] 指定した期間の開始時刻をWMIの日時形式に変換して照会条件に使用します。
-filter.SetVarDate DateAdd("h", -hours, Now), True
+dateFilter.SetVarDate DateAdd("h", -hours, Now), True
 Set service = GetObject("winmgmts:\\.\root\cimv2")
 ' [処理解説] WMIの Win32_NTLogEvent を照会し、EventCode, SourceName, TimeGenerated, RecordNumber を取得します。
 Set events = service.ExecQuery( _
     "SELECT EventCode, SourceName, TimeGenerated, RecordNumber FROM Win32_NTLogEvent " & _
     "WHERE Logfile='" & logName & "' AND EventCode=" & eventId & _
-    " AND TimeGenerated >= '" & filter.Value & "'")
+    " AND TimeGenerated >= '" & dateFilter.Value & "'")
 count = 0
 For Each eventItem In events
     WScript.Echo eventItem.TimeGenerated & vbTab & eventItem.EventCode & vbTab & _

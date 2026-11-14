@@ -15,7 +15,7 @@ ruleCount = 0
 Do While Not process.StdOut.AtEndOfStream
     line = process.StdOut.ReadLine
     If InStr(1, line, "Rule Name", vbTextCompare) > 0 Then ruleCount = ruleCount + 1
-Next
+Loop
 Do While Not process.StdErr.AtEndOfStream
     WScript.Echo "ERROR: " & process.StdErr.ReadLine
 Loop

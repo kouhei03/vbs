@@ -6,7 +6,7 @@
 
 Option Explicit
 
-Dim eventId, minutes, intervalSeconds, service, filter, events
+Dim eventId, minutes, intervalSeconds, service, dateFilter, events
 Dim eventItem, elapsed, count, previousCount
 ' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 3 Then
@@ -29,13 +29,13 @@ End If
 Set service = GetObject("winmgmts:\\.\root\cimv2")
 previousCount = -1
 For elapsed = 0 To minutes * 60 Step intervalSeconds
-    Set filter = CreateObject("WbemScripting.SWbemDateTime")
+    Set dateFilter = CreateObject("WbemScripting.SWbemDateTime")
     ' [処理解説] 指定した期間の開始時刻をWMIの日時形式に変換して照会条件に使用します。
-    filter.SetVarDate DateAdd("s", -elapsed, Now), True
+    dateFilter.SetVarDate DateAdd("s", -elapsed, Now), True
     ' [処理解説] WMIの Win32_NTLogEvent を照会し、EventCode を取得します。
     Set events = service.ExecQuery( _
         "SELECT EventCode FROM Win32_NTLogEvent WHERE Logfile='System' " & _
-        "AND EventCode=" & eventId & " AND TimeGenerated >= '" & filter.Value & "'")
+        "AND EventCode=" & eventId & " AND TimeGenerated >= '" & dateFilter.Value & "'")
     count = 0
     For Each eventItem In events
         count = count + 1
