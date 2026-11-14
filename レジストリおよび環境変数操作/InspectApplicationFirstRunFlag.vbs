@@ -1,6 +1,4 @@
-' 解説: 明示的な変数宣言を必須にします。
 Option Explicit
-' 解説: 任意のアプリケーション設定キーと値名を読み取り専用で確認するための変数です。
 Dim registry, hiveName, hive, subKey, valueName, result, valueNames, valueTypes, i
 If WScript.Arguments.Count <> 3 Then
     WScript.Echo "Usage: cscript //nologo InspectApplicationFirstRunFlag.vbs <hive> <subkey> <value-name>"
@@ -20,7 +18,6 @@ End Select
 subKey = WScript.Arguments(1)
 valueName = WScript.Arguments(2)
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
-' 解説: 値名とレジストリ型を調べ、初回起動フラグの値は変更しません。
 result = registry.EnumValues(hive, subKey, valueNames, valueTypes)
 If result <> 0 Then
     WScript.Echo "Could not enumerate key; WMI return code: " & result

@@ -1,9 +1,6 @@
-' 解説: 明示的な変数宣言を必須にします。
 Option Explicit
-' 解説: Windowsライセンス情報の照会と結果の判定に使う変数を宣言します。
 Dim service, products, product, licensedCount, statusName
 Set service = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
-' 解説: プロダクトキーを取得せず、キー情報の存在するライセンス製品の状態だけを照会します。
 Set products = service.ExecQuery("SELECT Name, LicenseStatus FROM SoftwareLicensingProduct WHERE PartialProductKey IS NOT NULL")
 licensedCount = 0
 For Each product In products

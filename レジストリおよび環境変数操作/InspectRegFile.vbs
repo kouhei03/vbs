@@ -1,12 +1,9 @@
-' 解説: 明示的な変数宣言を必須にします。
 Option Explicit
-' 解説: ファイル操作オブジェクトと読み取り用変数を保持します。
 Dim fso, file, filePath, firstLine, sectionCount, line
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo InspectRegFile.vbs <reg-file>"
     WScript.Quit 2
 End If
-' 解説: 指定されたREGファイルを読み取り専用で開きます。
 filePath = WScript.Arguments(0)
 Set fso = CreateObject("Scripting.FileSystemObject")
 If Not fso.FileExists(filePath) Then
@@ -19,7 +16,6 @@ If file.AtEndOfStream Then
     WScript.Echo "The file is empty."
     WScript.Quit 1
 End If
-' 解説: ヘッダー形式とセクション数を調べるだけで、REGファイルはインポートしません。
 firstLine = Trim(file.ReadLine)
 sectionCount = 0
 Do Until file.AtEndOfStream

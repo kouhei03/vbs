@@ -1,12 +1,9 @@
-' 解説: 明示的な変数宣言を必須にします。
 Option Explicit
-' 解説: レジストリプロバイダー、対象ハイブ、およびキー情報を保持します。
 Dim registry, hiveName, hive, subKey, result, names, types
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo CheckRegistryExportSource.vbs <hive> <subkey>"
     WScript.Quit 2
 End If
-' 解説: 許可済みハイブ名をWMI識別子へ変換します。
 hiveName = UCase(WScript.Arguments(0))
 Select Case hiveName
     Case "HKCR": hive = &H80000000
@@ -18,7 +15,6 @@ Select Case hiveName
         WScript.Echo "Unsupported registry hive: " & hiveName
         WScript.Quit 2
 End Select
-' 解説: エクスポート元キーにアクセスできるかだけを確認し、ファイル出力は行いません。
 subKey = WScript.Arguments(1)
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
 result = registry.EnumValues(hive, subKey, names, types)

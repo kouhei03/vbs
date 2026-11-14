@@ -1,6 +1,4 @@
-' 解説: 明示的な変数宣言を必須にします。
 Option Explicit
-' 解説: IFEO対象のイメージ名、Debugger値の有無、および照会結果を保持します。
 Dim registry, imageName, subKey, result, names, types, i
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo InspectIFEOBlockSettings.vbs <image-name.exe>"
@@ -13,7 +11,6 @@ If InStr(imageName, "\") > 0 Or InStr(imageName, "/") > 0 Then
 End If
 subKey = "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\" & imageName
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
-' 解説: IFEO配下にDebugger値があるかだけを確認し、値データは表示しません。
 result = registry.EnumValues(&H80000002, subKey, names, types)
 If result <> 0 Then
     WScript.Echo "IFEO key unavailable; WMI return code: " & result
