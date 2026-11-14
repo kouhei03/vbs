@@ -84,4 +84,32 @@ Run scripts from an elevated console only when the requested registry location
 requires it. Some diagnostics can return access-denied or unavailable results
 when the account lacks permission, the key is absent, or the relevant audit
 policy is not enabled. These scripts do not change those conditions.
+
+## Additional read-only diagnostics (items 141-240)
+
+The following grouped scripts provide safe inspection equivalents for the
+requested advanced topics. They do not write registry values, change policy,
+modify environment variables, load hives, or connect to remote computers.
+Values that may contain credentials or identifiers are not displayed.
+
+| No. | Script | Read-only behavior |
+|---:|---|---|
+| 141-160 | `141_RegistryValueAudit.vbs` | Lists value names/types and immediate subkey count for a selected local key; does not display value data. |
+| 161-180 | `161_EnvironmentScopeAudit.vbs` | Compares process, user, and system environment scopes; reports PATH length, duplicate entries, and missing folders without changing them. |
+| 181-205 | `181_WindowsPolicyAudit.vbs` | Reports selected Windows policy/security setting states without changing them or displaying string contents. |
+| 206-240 | `206_ConfigurationInventoryAudit.vbs` | Checks selected application, runtime, browser, printer, USB, and configuration key inventories; reports counts only. |
+
+Examples:
+
+```text
+cscript //nologo 141_RegistryValueAudit.vbs HKCU "Software"
+cscript //nologo 161_EnvironmentScopeAudit.vbs
+cscript //nologo 181_WindowsPolicyAudit.vbs
+cscript //nologo 206_ConfigurationInventoryAudit.vbs
+```
+
+These are grouped audit examples rather than state-changing implementations.
+Operations such as ACL changes, hive mounting, remote registry writes,
+credential storage, policy changes, deletion, deployment, and automatic
+restoration remain intentionally out of scope.
 <!-- 解説: この段落は必要な権限、未設定時の結果、監査ポリシー未構成時の制限を説明しています。 -->
