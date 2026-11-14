@@ -1,4 +1,7 @@
-' 一般的なブラウザキャッシュフォルダーの存在とサイズだけを確認します。削除しません。
+' 概要: 一般的なブラウザキャッシュフォルダーの存在とサイズだけを確認します。削除しません。
+' 実行方法: cscript //nologo 028_BrowserCacheSizeAudit.vbs
+' 処理結果: 代表的キャッシュのサイズ確認（削除なし）。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, shell, appData, localAppData
 Set fso = CreateObject("Scripting.FileSystemObject")
@@ -26,6 +29,7 @@ End Sub
 Function FolderBytes(folder)
     Dim file, child, total
     total = CDbl(0)
+    ' 主処理: 対象の一覧を1件ずつ処理します。
     For Each file In folder.Files
         total = total + CDbl(file.Size)
     Next

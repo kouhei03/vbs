@@ -1,6 +1,10 @@
-' ShellのZIP機能でフォルダーを圧縮します。既存のZIPは上書きしません。
+' 概要: ShellのZIP機能でフォルダーを圧縮します。既存のZIPは上書きしません。
+' 実行方法: Usage: cscript //nologo 018_ZipFolder.vbs <folder> <new-archive.zip>
+' 処理結果: Windows Shellによる新規ZIP作成。処理結果や状態はコンソールに表示されます。
+' コード解説: ADODB.Streamでデータを読み書きし、指定形式の結果を扱います。
 Option Explicit
 Dim fso, source, zipPath, stream, shell, zipFolder, sourceFolder, deadline, lastSize, stableSince, currentSize
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 018_ZipFolder.vbs <folder> <new-archive.zip>"
     WScript.Quit 2
@@ -28,6 +32,7 @@ zipFolder.CopyHere sourceFolder.Items, 20
 deadline = DateAdd("n", 10, Now)
 lastSize = -1
 stableSince = Now
+' 主処理: 条件を確認しながら処理を繰り返します。
 Do While Now < deadline
     currentSize = fso.GetFile(zipPath).Size
     If currentSize <> lastSize Then

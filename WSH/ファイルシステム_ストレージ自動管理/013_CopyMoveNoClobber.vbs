@@ -1,7 +1,11 @@
-' コピー／移動時に同名ファイルを避け、未使用の番号付き名前を選びます。
-' 操作はAPPLY指定時だけ実行します。
+' 概要: コピー／移動時に同名ファイルを避け、未使用の番号付き名前を選びます。
+' 実行方法: Usage: cscript //nologo 013_CopyMoveNoClobber.vbs <file> <destination-folder> <copy|move> [APPLY]
+' 処理結果: 衝突を避けるコピー／移動。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
+' 補足: 操作はAPPLY指定時だけ実行します。
 Option Explicit
 Dim fso, source, destination, action, mode, file, newPath, i, ext, stem
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 3 Or WScript.Arguments.Count > 4 Then
     WScript.Echo "Usage: cscript //nologo 013_CopyMoveNoClobber.vbs <file> <destination-folder> <copy|move> [APPLY]"
     WScript.Quit 2
@@ -31,6 +35,7 @@ Do While fso.FileExists(newPath)
 Loop
 WScript.Echo action & ": " & source & " -> " & newPath
 If mode = "APPLY" Then
+    ' 主処理: 対象をコピーします。
     If action = "copy" Then fso.CopyFile source, newPath, False
     If action = "move" Then fso.MoveFile source, newPath
 Else

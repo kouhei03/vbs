@@ -1,6 +1,10 @@
-' 指定フォルダー以下を走査し、絶対パスが指定文字数を超える項目を表示します。
+' 概要: 指定フォルダー以下を走査し、絶対パスが指定文字数を超える項目を表示します。
+' 実行方法: Usage: cscript //nologo 032_FindLongPaths.vbs <folder> <max-character-count>
+' 処理結果: 指定長を超えるパスの検出。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, root, limit
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 032_FindLongPaths.vbs <folder> <max-character-count>"
     WScript.Quit 2
@@ -17,6 +21,7 @@ If Not fso.FolderExists(root) Or limit < 1 Then WScript.Quit 2
 ScanFolder fso.GetFolder(root)
 Sub ScanFolder(folder)
     Dim file, child
+    ' 主処理: 対象の一覧を1件ずつ確認します。
     For Each file In folder.Files
         If Len(file.Path) > limit Then WScript.Echo Len(file.Path) & vbTab & file.Path
     Next

@@ -1,6 +1,10 @@
-' 指定フォルダー以下のファイル一覧をUTF-16ログに出力します。
+' 概要: 指定フォルダー以下のファイル一覧をUTF-16ログに出力します。
+' 実行方法: Usage: cscript //nologo 001_ListFilesRecursive.vbs <folder> <log-file>
+' 処理結果: 再帰ファイル一覧とサイズをログ出力。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, root, logPath, outFile
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 001_ListFilesRecursive.vbs <folder> <log-file>"
     WScript.Quit 2
@@ -23,6 +27,7 @@ outFile.Close
 WScript.Echo "Wrote " & logPath
 Sub ListFolder(folder, output, excludedName)
     Dim file, child, attr
+    ' 主処理: 対象の一覧を1件ずつ処理します。
     For Each file In folder.Files
         If LCase(file.Name) <> LCase(excludedName) Or LCase(folder.Path) <> LCase(fso.GetParentFolderName(logPath)) Then
             output.WriteLine file.Path & vbTab & file.Size

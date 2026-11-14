@@ -1,6 +1,10 @@
-' 指定フォルダー内の同一拡張子テキストを名前順に連結します。
+' 概要: 指定フォルダー内の同一拡張子テキストを名前順に連結します。
+' 実行方法: Usage: cscript //nologo 007_ConcatenateTextFiles.vbs <folder> <output-file> <extension>
+' 処理結果: 同一拡張子のテキストを名前順に連結。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, root, outputPath, extension, folder, file, names(), count, i, j, swap, inputFile, outputFile
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 3 Then
     WScript.Echo "Usage: cscript //nologo 007_ConcatenateTextFiles.vbs <folder> <output-file> <extension>"
     WScript.Quit 2
@@ -11,6 +15,7 @@ outputPath = fso.GetAbsolutePathName(WScript.Arguments(1))
 extension = LCase(Replace(WScript.Arguments(2), ".", ""))
 If Not fso.FolderExists(root) Or extension = "" Or fso.FileExists(outputPath) Then WScript.Quit 2
 count = 0
+' 主処理: 対象の一覧を1件ずつ処理します。
 For Each file In fso.GetFolder(root).Files
     If LCase(fso.GetExtensionName(file.Name)) = extension And LCase(file.Path) <> LCase(outputPath) Then
         ReDim Preserve names(count)

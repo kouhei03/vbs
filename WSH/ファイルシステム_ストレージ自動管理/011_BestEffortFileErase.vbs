@@ -1,7 +1,11 @@
-' 注意: SSD/スナップショット等からの復元を保証する安全な消去はできません。
-' 単一ファイルのみを3回上書きして削除するベストエフォート例です。
+' 概要: 単一ファイルのみを3回上書きして削除するベストエフォート例です。
+' 実行方法: Usage: cscript //nologo 011_BestEffortFileErase.vbs <file> <CONFIRM:absolute-file-path>
+' 処理結果: 単一ファイルのベストエフォート上書き・削除。処理結果や状態はコンソールに表示されます。
+' コード解説: ADODB.Streamでデータを読み書きし、指定形式の結果を扱います。
+' 補足: 注意: SSD/スナップショット等からの復元を保証する安全な消去はできません。
 Option Explicit
 Dim fso, path, confirm, file, size, stream, offset, chunkSize, n, buffer, i, passNo
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 011_BestEffortFileErase.vbs <file> <CONFIRM:absolute-file-path>"
     WScript.Quit 2
@@ -21,6 +25,7 @@ If size > 268435456 Then
     WScript.Quit 2
 End If
 If size = 0 Then
+    ' 主処理: 条件に一致した対象を削除します。
     file.Delete True
     WScript.Echo "Deleted empty file; secure erasure is not guaranteed."
     WScript.Quit 0

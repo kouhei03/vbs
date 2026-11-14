@@ -1,4 +1,7 @@
-' 独自のHKCUコンテキストメニュー項目の有無だけを確認します。項目は追加しません。
+' 概要: 独自のHKCUコンテキストメニュー項目の有無だけを確認します。項目は追加しません。
+' 実行方法: cscript //nologo 165_ContextMenuAudit.vbs
+' 処理結果: ユーザーコンテキストメニュー値の照会。処理結果や状態はコンソールに表示されます。
+' コード解説: レジストリ値を読み取り、値または読み取りエラーを表示します。
 Option Explicit
 Dim shell, roots, root, value, found
 Set shell = CreateObject("WScript.Shell")
@@ -9,6 +12,7 @@ roots = Array( _
 found = False
 For Each root In roots
     On Error Resume Next
+    ' 主処理: 対象のレジストリ値を読み取ります。
     value = shell.RegRead(root)
     If Err.Number = 0 Then
         WScript.Echo "Default item at " & root & ": " & value

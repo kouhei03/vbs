@@ -1,6 +1,10 @@
-' 全角ASCII文字と空白を半角化し、空白をアンダースコアへ置換します。
+' 概要: 全角ASCII文字と空白を半角化し、空白をアンダースコアへ置換します。
+' 実行方法: Usage: cscript //nologo 016_NormalizeFileNames.vbs <folder> [APPLY]
+' 処理結果: 全角ASCII・空白を半角化し、空白をアンダースコアへ置換。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, root, mode, folder, file, cleaned, target, collision
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 1 Or WScript.Arguments.Count > 2 Then
     WScript.Echo "Usage: cscript //nologo 016_NormalizeFileNames.vbs <folder> [APPLY]"
     WScript.Quit 2
@@ -12,6 +16,7 @@ If WScript.Arguments.Count = 2 Then mode = UCase(WScript.Arguments(1))
 If Not fso.FolderExists(root) Or (mode <> "" And mode <> "APPLY") Then WScript.Quit 2
 Set folder = fso.GetFolder(root)
 collision = False
+' 主処理: 対象の一覧を1件ずつ処理します。
 For Each file In folder.Files
     cleaned = Replace(StrConv(file.Name, vbNarrow), ChrW(&H3000), "_")
     cleaned = Replace(Trim(cleaned), " ", "_")

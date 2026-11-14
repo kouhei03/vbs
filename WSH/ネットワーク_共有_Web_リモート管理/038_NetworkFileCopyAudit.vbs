@@ -1,6 +1,10 @@
-' ネットワーク共有上のファイルとローカル候補のサイズ・SHA-256を比較します。コピーはしません。
+' 概要: ネットワーク共有上のファイルとローカル候補のサイズ・SHA-256を比較します。コピーはしません。
+' 実行方法: Usage: cscript //nologo 038_NetworkFileCopyAudit.vbs <source-file> <destination-file>
+' 処理結果: 2ファイルのサイズ・SHA-256比較（コピーなし）。処理結果や状態はコンソールに表示されます。
+' コード解説: 外部コマンドの標準出力・標準エラーを読み取って結果を処理します。
 Option Explicit
 Dim fso, source, destination, shell, sourceHash, destinationHash
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 038_NetworkFileCopyAudit.vbs <source-file> <destination-file>"
     WScript.Quit 2
@@ -23,6 +27,7 @@ WScript.Echo "Match."
 Function HashFile(path)
     Dim runner, line, hash
     Set shell = CreateObject("WScript.Shell")
+    ' 主処理: 外部コマンドの出力を読み取ります。
     Set runner = shell.Exec("certutil.exe -hashfile """ & path & """ SHA256")
     hash = ""
     Do While Not runner.StdOut.AtEndOfStream

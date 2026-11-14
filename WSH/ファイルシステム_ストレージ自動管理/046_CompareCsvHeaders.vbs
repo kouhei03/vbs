@@ -1,6 +1,10 @@
-' 複数CSVの先頭行（ヘッダー）がすべて一致するか確認します。
+' 概要: 複数CSVの先頭行（ヘッダー）がすべて一致するか確認します。
+' 実行方法: Usage: cscript //nologo 046_CompareCsvHeaders.vbs <file1.csv> <file2.csv> [file3.csv ...]
+' 処理結果: 複数CSVのヘッダー比較。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, baseline, i, path, file, header
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 2 Then
     WScript.Echo "Usage: cscript //nologo 046_CompareCsvHeaders.vbs <file1.csv> <file2.csv> [file3.csv ...]"
     WScript.Quit 2
@@ -13,6 +17,7 @@ For i = 0 To WScript.Arguments.Count - 1
         WScript.Echo "File not found: " & path
         WScript.Quit 2
     End If
+    ' 主処理: 入力ファイルを開いて内容を読み取ります。
     Set file = fso.OpenTextFile(path, 1, False, -2)
     If file.AtEndOfStream Then
         file.Close

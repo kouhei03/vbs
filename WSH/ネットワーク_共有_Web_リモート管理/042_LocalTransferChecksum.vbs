@@ -1,6 +1,10 @@
-' クラウド転送は行わず、ローカルファイルのSHA-256マニフェストを新規作成します。
+' 概要: クラウド転送は行わず、ローカルファイルのSHA-256マニフェストを新規作成します。
+' 実行方法: Usage: cscript //nologo 042_LocalTransferChecksum.vbs <paths-list.txt> <new-manifest.txt>
+' 処理結果: ローカルファイルのチェックサム一覧作成。処理結果や状態はコンソールに表示されます。
+' コード解説: 外部コマンドの標準出力・標準エラーを読み取って結果を処理します。
 Option Explicit
 Dim fso, inputPath, outputPath, inputFile, output, path, shell, runner, line, hash
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 042_LocalTransferChecksum.vbs <paths-list.txt> <new-manifest.txt>"
     WScript.Quit 2
@@ -22,6 +26,7 @@ Do Until inputFile.AtEndOfStream
             WScript.Echo "File not found: " & path
             WScript.Quit 1
         End If
+        ' 主処理: 外部コマンドの出力を読み取ります。
         Set runner = shell.Exec("certutil.exe -hashfile """ & fso.GetAbsolutePathName(path) & """ SHA256")
         hash = ""
         Do While Not runner.StdOut.AtEndOfStream

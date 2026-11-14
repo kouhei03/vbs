@@ -1,6 +1,10 @@
-' 指定ログをタイムスタンプ付き名へ退避し、新しい空ログを作成します。
+' 概要: 指定ログをタイムスタンプ付き名へ退避し、新しい空ログを作成します。
+' 実行方法: Usage: cscript //nologo 025_RotateLog.vbs <log-file> [ROTATE]
+' 処理結果: ログ退避と新規ログ作成。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, path, mode, rotated, stamp, file, output
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 1 Or WScript.Arguments.Count > 2 Then
     WScript.Echo "Usage: cscript //nologo 025_RotateLog.vbs <log-file> [ROTATE]"
     WScript.Quit 2
@@ -23,6 +27,7 @@ If fso.FileExists(rotated) Then
     WScript.Quit 1
 End If
 file.Move rotated
+' 主処理: 結果ファイルを作成します。
 Set output = fso.CreateTextFile(path, False, True)
 output.Close
 WScript.Echo "Created new log: " & path

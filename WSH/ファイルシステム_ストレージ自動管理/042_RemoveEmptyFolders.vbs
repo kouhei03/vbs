@@ -1,7 +1,11 @@
-' 空フォルダーを再帰的に検出します。削除はDELETEを指定した場合だけ行います。
-' 指定したルート自体と再解析ポイントは削除しません。
+' 概要: 空フォルダーを再帰的に検出します。削除はDELETEを指定した場合だけ行います。
+' 実行方法: Usage: cscript //nologo 042_RemoveEmptyFolders.vbs <folder> [DELETE]
+' 処理結果: 空フォルダー検出／指定時の削除。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
+' 補足: 指定したルート自体と再解析ポイントは削除しません。
 Option Explicit
 Dim fso, root, mode
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 1 Or WScript.Arguments.Count > 2 Then
     WScript.Echo "Usage: cscript //nologo 042_RemoveEmptyFolders.vbs <folder> [DELETE]"
     WScript.Quit 2
@@ -16,6 +20,7 @@ If mode <> "DELETE" Then WScript.Echo "Preview only; append DELETE to remove emp
 Sub ScanFolder(folder)
     Dim children, child, path
     Set children = CreateObject("Scripting.Dictionary")
+    ' 主処理: 対象の一覧を1件ずつ処理します。
     For Each child In folder.SubFolders
         If (child.Attributes And 1024) = 0 Then children.Add child.Path, child.Name
     Next
@@ -26,6 +31,7 @@ Sub ScanFolder(folder)
                 Set child = fso.GetFolder(path)
                 If child.Files.Count = 0 And child.SubFolders.Count = 0 Then
                     WScript.Echo path
+                    ' 主処理: 条件に一致した対象を削除します。
                     If mode = "DELETE" Then fso.DeleteFolder path, True
                 End If
             End If

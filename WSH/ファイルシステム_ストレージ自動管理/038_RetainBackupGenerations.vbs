@@ -1,7 +1,11 @@
-' バックアップ世代を作成し、古い世代を指定数だけ残して削除します。
-' 既定はプレビュー。APPLY指定でコピーと削除を実行します。
+' 概要: バックアップ世代を作成し、古い世代を指定数だけ残して削除します。
+' 実行方法: Usage: cscript //nologo 038_RetainBackupGenerations.vbs <source-folder> <backup-parent> <keep-count> [APPLY]
+' 処理結果: バックアップ世代作成と保持数管理。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
+' 補足: 既定はプレビュー。APPLY指定でコピーと削除を実行します。
 Option Explicit
 Dim fso, source, parent, keepCount, mode, stamp, backupRoot, folder, generations(), count, i, j, swap, cutoff, re
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 3 Or WScript.Arguments.Count > 4 Then
     WScript.Echo "Usage: cscript //nologo 038_RetainBackupGenerations.vbs <source-folder> <backup-parent> <keep-count> [APPLY]"
     WScript.Quit 2
@@ -40,6 +44,7 @@ If mode = "APPLY" Then
 End If
 count = 0
 If fso.FolderExists(parent) Then
+    ' 主処理: 対象の一覧を1件ずつ処理します。
     For Each folder In fso.GetFolder(parent).SubFolders
         If re.Test(folder.Name) And (folder.Attributes And 1024) = 0 Then
             ReDim Preserve generations(count)
@@ -58,6 +63,7 @@ Next
 If mode = "APPLY" Then cutoff = keepCount Else cutoff = keepCount - 1
 For i = cutoff To count - 1
     WScript.Echo "Remove old generation: " & generations(i)
+    ' 主処理: 条件に一致した対象を削除します。
     If mode = "APPLY" Then fso.DeleteFolder generations(i), True
 Next
 If mode <> "APPLY" Then WScript.Echo "Preview only; append APPLY to create and prune backups."

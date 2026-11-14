@@ -1,6 +1,10 @@
-' INIのセクションとキーを検索して値を表示します（最初に一致したキー）。
+' 概要: INIのセクションとキーを検索して値を表示します（最初に一致したキー）。
+' 実行方法: Usage: cscript //nologo 021_ReadIniValue.vbs <file.ini> <section> <key>
+' 処理結果: INI形式のセクション・キー読み取り。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, path, sectionName, keyName, file, line, currentSection, pos
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 3 Then
     WScript.Echo "Usage: cscript //nologo 021_ReadIniValue.vbs <file.ini> <section> <key>"
     WScript.Quit 2
@@ -10,6 +14,7 @@ path = fso.GetAbsolutePathName(WScript.Arguments(0))
 sectionName = LCase(Trim(WScript.Arguments(1)))
 keyName = LCase(Trim(WScript.Arguments(2)))
 If Not fso.FileExists(path) Then WScript.Quit 2
+' 主処理: 入力ファイルを開きます。
 Set file = fso.OpenTextFile(path, 1, False, -2)
 currentSection = ""
 Do Until file.AtEndOfStream

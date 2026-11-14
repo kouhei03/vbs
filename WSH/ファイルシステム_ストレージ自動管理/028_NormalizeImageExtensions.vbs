@@ -1,6 +1,10 @@
-' 画像ヘッダーを確認し、JPEG/PNG/GIF/BMPの拡張子を正規化します。
+' 概要: 画像ヘッダーを確認し、JPEG/PNG/GIF/BMPの拡張子を正規化します。
+' 実行方法: Usage: cscript //nologo 028_NormalizeImageExtensions.vbs <folder> [APPLY]
+' 処理結果: 画像ヘッダーに基づく拡張子正規化。処理結果や状態はコンソールに表示されます。
+' コード解説: ADODB.Streamでデータを読み書きし、指定形式の結果を扱います。
 Option Explicit
 Dim fso, root, mode, folder, file, stream, data, kind, extension, target
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 1 Or WScript.Arguments.Count > 2 Then
     WScript.Echo "Usage: cscript //nologo 028_NormalizeImageExtensions.vbs <folder> [APPLY]"
     WScript.Quit 2
@@ -11,6 +15,7 @@ mode = ""
 If WScript.Arguments.Count = 2 Then mode = UCase(WScript.Arguments(1))
 If Not fso.FolderExists(root) Or (mode <> "" And mode <> "APPLY") Then WScript.Quit 2
 Set folder = fso.GetFolder(root)
+' 主処理: 対象の一覧を1件ずつ処理します。
 For Each file In folder.Files
     Set stream = CreateObject("ADODB.Stream")
     stream.Type = 1

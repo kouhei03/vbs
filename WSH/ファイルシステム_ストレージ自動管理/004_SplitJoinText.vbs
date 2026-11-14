@@ -1,6 +1,10 @@
-' テキストを行単位で分割／結合します。改行形式は出力時にCRLFへ統一されます。
+' 概要: テキストを行単位で分割／結合します。改行形式は出力時にCRLFへ統一されます。
+' 実行方法: cscript //nologo 004_SplitJoinText.vbs
+' 処理結果: テキストの行単位分割／結合。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, mode, source, value, stream, lineNo, partNo, output, partPath, partName, outputPath, hasLaterPart
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 3 Or WScript.Arguments.Count > 4 Then
     WScript.Echo "Split: cscript //nologo 004_SplitJoinText.vbs split <file> <lines-per-part>"
     WScript.Echo "Join:  cscript //nologo 004_SplitJoinText.vbs join <parts-folder> <original-name> <output-file>"
@@ -14,6 +18,7 @@ If mode = "split" Then
     If WScript.Arguments.Count <> 3 Then WScript.Quit 2
     If Not fso.FileExists(source) Or Not IsNumeric(value) Then WScript.Quit 2
     If CLng(value) < 1 Or CLng(value) > 1000000 Then WScript.Quit 2
+    ' 主処理: 入力ファイルを開きます。
     Set stream = fso.OpenTextFile(source, 1, False, -2)
     lineNo = 0
     partNo = 1
@@ -57,6 +62,7 @@ ElseIf mode = "join" Then
             Next
             If hasLaterPart Then
                 output.Close
+                ' 主処理: 条件に一致した対象を削除します。
                 fso.DeleteFile outputPath, True
                 WScript.Echo "Part sequence has a gap at " & partNo
                 WScript.Quit 1

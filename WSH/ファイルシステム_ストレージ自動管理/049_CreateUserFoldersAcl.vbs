@@ -1,7 +1,11 @@
-' ユーザー別フォルダー作成とModify権限の割り当てをプレビューします。
-' APPLYで実行。ユーザー一覧は1行1アカウント、例: DOMAIN\\user
+' 概要: ユーザー別フォルダー作成とModify権限の割り当てをプレビューします。
+' 実行方法: Usage: cscript //nologo 049_CreateUserFoldersAcl.vbs <root-folder> <accounts.txt> [APPLY]
+' 処理結果: ユーザーフォルダーとModify ACLの作成。処理結果や状態はコンソールに表示されます。
+' コード解説: 外部コマンドの標準出力・標準エラーを読み取って結果を処理します。
+' 補足: APPLYで実行。ユーザー一覧は1行1アカウント、例: DOMAIN\\user
 Option Explicit
 Dim fso, root, listPath, mode, listFile, account, shell, folderPath, command, process, re
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 2 Or WScript.Arguments.Count > 3 Then
     WScript.Echo "Usage: cscript //nologo 049_CreateUserFoldersAcl.vbs <root-folder> <accounts.txt> [APPLY]"
     WScript.Quit 2
@@ -30,6 +34,7 @@ Do Until listFile.AtEndOfStream
             If Not fso.FolderExists(root) Then fso.CreateFolder root
             If Not fso.FolderExists(folderPath) Then fso.CreateFolder folderPath
             command = "icacls.exe """ & folderPath & """ /grant:r """ & account & ":(OI)(CI)M"""
+            ' 主処理: 外部コマンドを実行し、終了コードまたは出力を確認します。
             Set process = shell.Exec(command)
             Do While Not process.StdOut.AtEndOfStream
                 WScript.Echo process.StdOut.ReadLine

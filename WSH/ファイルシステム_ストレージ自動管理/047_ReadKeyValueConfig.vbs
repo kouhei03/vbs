@@ -1,6 +1,10 @@
-' JSONライクな設定テキストのkey=value行を読み込みます。JSON文法の完全なパーサーではありません。
+' 概要: JSONライクな設定テキストのkey=value行を読み込みます。JSON文法の完全なパーサーではありません。
+' 実行方法: Usage: cscript //nologo 047_ReadKeyValueConfig.vbs <config-file>
+' 処理結果: `key=value`設定ファイルの読み取り。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, path, file, line, separator, key, value, settings
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 047_ReadKeyValueConfig.vbs <config-file>"
     WScript.Quit 2
@@ -31,6 +35,7 @@ Do Until file.AtEndOfStream
     End If
 Loop
 file.Close
+' 主処理: 対象の一覧を1件ずつ処理します。
 For Each key In settings.Keys
     WScript.Echo key & "=" & settings(key)
 Next

@@ -1,6 +1,10 @@
-' 指定フォルダー直下のファイルを名前順に連番化します。衝突確認後、APPLYで実行します。
+' 概要: 指定フォルダー直下のファイルを名前順に連番化します。衝突確認後、APPLYで実行します。
+' 実行方法: Usage: cscript //nologo 017_NumberFiles.vbs <folder> [APPLY]
+' 処理結果: 名前順の連番リネーム。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, root, mode, folder, file, names(), tempNames(), tempSet, count, i, j, swap, target, stem, width, tempPath
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 1 Or WScript.Arguments.Count > 2 Then
     WScript.Echo "Usage: cscript //nologo 017_NumberFiles.vbs <folder> [APPLY]"
     WScript.Quit 2
@@ -11,6 +15,7 @@ mode = ""
 If WScript.Arguments.Count = 2 Then mode = UCase(WScript.Arguments(1))
 If Not fso.FolderExists(root) Or (mode <> "" And mode <> "APPLY") Then WScript.Quit 2
 count = 0
+' 主処理: 対象の一覧を1件ずつ処理します。
 For Each file In fso.GetFolder(root).Files
     ReDim Preserve names(count)
     names(count) = file.Path

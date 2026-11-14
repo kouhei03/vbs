@@ -1,6 +1,10 @@
-' 拡張子別にファイルを移動します。APPLYを指定するまでプレビューのみです。
+' 概要: 拡張子別にファイルを移動します。APPLYを指定するまでプレビューのみです。
+' 実行方法: Usage: cscript //nologo 002_SortByExtension.vbs <source-folder> <destination-folder> [APPLY]
+' 処理結果: 拡張子別フォルダーへの振り分け。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, sourceFolder, destination, mode, file, ext, target, newPath, i
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count < 2 Or WScript.Arguments.Count > 3 Then
     WScript.Echo "Usage: cscript //nologo 002_SortByExtension.vbs <source-folder> <destination-folder> [APPLY]"
     WScript.Quit 2
@@ -19,6 +23,7 @@ If mode <> "" And mode <> "APPLY" Then
     WScript.Quit 2
 End If
 If Not fso.FolderExists(destination) And mode = "APPLY" Then fso.CreateFolder destination
+' 主処理: 対象の一覧を1件ずつ処理します。
 For Each file In fso.GetFolder(sourceFolder).Files
     ext = fso.GetExtensionName(file.Name)
     If ext = "" Then ext = "_no_extension"
@@ -37,6 +42,7 @@ For Each file In fso.GetFolder(sourceFolder).Files
         i = i + 1
     Loop
     WScript.Echo file.Path & " -> " & newPath
+    ' 主処理: 対象を移動します。
     If mode = "APPLY" Then file.Move newPath
 Next
 If mode <> "APPLY" Then WScript.Echo "Preview only; append APPLY to move files."

@@ -1,10 +1,15 @@
-' 指定先にWindowsショートカット(.lnk)を作成します。既存ファイルは上書きしません。
+' 概要: 指定先にWindowsショートカット(.lnk)を作成します。既存ファイルは上書きしません。
+' 実行方法: Usage: cscript //nologo 020_CreateShortcut.vbs <target-path> <new-shortcut.lnk>
+' 処理結果: `.lnk`ショートカット作成。処理結果や状態はコンソールに表示されます。
+' コード解説: FileSystemObjectで対象パスを確認し、ファイルやフォルダーを処理します。
 Option Explicit
 Dim fso, target, shortcutPath, shell, shortcut
+' 引数の数を検証し、誤った呼び出しではUsageを表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 020_CreateShortcut.vbs <target-path> <new-shortcut.lnk>"
     WScript.Quit 2
 End If
+' 主処理: `.lnk`ショートカット作成。
 Set fso = CreateObject("Scripting.FileSystemObject")
 target = fso.GetAbsolutePathName(WScript.Arguments(0))
 shortcutPath = fso.GetAbsolutePathName(WScript.Arguments(1))
