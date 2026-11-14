@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, events, eventRecord, query, count
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] SecurityログのイベントID 4800をロック履歴として照会します。
 query = "SELECT EventCode,TimeGenerated,RecordNumber,SourceName FROM Win32_NTLogEvent WHERE Logfile='Security' AND EventCode='4800'"
 Set events = service.ExecQuery(query)
 count = 0

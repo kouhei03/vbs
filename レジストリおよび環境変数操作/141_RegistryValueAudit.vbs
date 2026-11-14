@@ -9,6 +9,7 @@ Option Explicit
 Dim registry, hiveName, hive, subKey, result, valueNames, valueTypes
 Dim subKeys, index, valueTypeName
 
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 141_RegistryValueAudit.vbs <hive> <subkey>"
     WScript.Quit 2
@@ -16,6 +17,7 @@ End If
 
 hiveName = UCase(WScript.Arguments(0))
 subKey = WScript.Arguments(1)
+' [処理解説] 入力されたハイブ名をStdRegProvで使用する定数に対応付けます。
 Select Case hiveName
     Case "HKCR": hive = &H80000000
     Case "HKCU": hive = &H80000001
@@ -30,6 +32,7 @@ End Select
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
 WScript.Echo "READ-ONLY registry inventory: " & hiveName & "\" & subKey
 
+' [処理解説] 指定キーの値名と型を列挙します。値データはこの操作では取得しません。
 result = registry.EnumValues(hive, subKey, valueNames, valueTypes)
 If result <> 0 Then
     WScript.Echo "Value enumeration failed with WMI return code: " & result
@@ -53,6 +56,7 @@ Else
     WScript.Echo "No values found."
 End If
 
+' [処理解説] 指定キーの直下のサブキーを列挙します。再帰的な走査ではありません。
 result = registry.EnumKey(hive, subKey, subKeys)
 If result <> 0 Then
     WScript.Echo "Subkey enumeration failed with WMI return code: " & result

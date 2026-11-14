@@ -6,6 +6,7 @@
 Option Explicit
 Dim shell, environment, variable
 Set shell = CreateObject("WScript.Shell")
+' [処理解説] SYSTEMスコープの環境変数を列挙します。値を変更しません。
 Set environment = shell.Environment("SYSTEM")
 For Each variable In environment
     WScript.Echo variable

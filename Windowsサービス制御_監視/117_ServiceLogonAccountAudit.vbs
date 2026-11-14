@@ -7,12 +7,14 @@
 ' サービスのログオンアカウント名を照会します。パスワードは扱いません。
 Option Explicit
 Dim serviceName, validator
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 117_ServiceLogonAccountAudit.vbs <service-name>"
     WScript.Quit 2
 End If
 serviceName = Trim(WScript.Arguments(0))
 Set validator = New RegExp
+' [処理解説] 引数に許可する文字を限定して名前を検証します。
 validator.Pattern = "^[A-Za-z0-9_.-]+$"
 If Not validator.Test(serviceName) Then
     WScript.Echo "Use a service name containing only letters, digits, dot, underscore, or hyphen."
@@ -20,6 +22,7 @@ If Not validator.Test(serviceName) Then
 End If
 Dim service, services, item, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, State, StartMode, StartName, PathName, Description, ExitCode を取得します。
 Set services = service.ExecQuery("SELECT Name, DisplayName, State, StartMode, StartName, PathName, Description, ExitCode FROM Win32_Service")
 found = False
 For Each item In services

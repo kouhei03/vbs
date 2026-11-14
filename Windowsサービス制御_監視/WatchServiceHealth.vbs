@@ -8,6 +8,7 @@ Option Explicit
 
 Dim service, services, item, serviceName, intervalText, durationText
 Dim intervalSeconds, durationSeconds, startTime, found, currentState
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 3 Then
     WScript.Echo "Usage: cscript //nologo WatchServiceHealth.vbs <service-name> <interval-seconds 5-300> <duration-seconds 5-3600>"
     WScript.Quit 2
@@ -26,6 +27,7 @@ Set service = GetObject("winmgmts:\\.\root\cimv2")
 startTime = Now
 currentState = ""
 Do
+    ' [処理解説] WMIの Win32_Service を照会し、Name, State を取得します。
     Set services = service.ExecQuery("SELECT Name, State FROM Win32_Service")
     found = False
     For Each item In services
@@ -46,10 +48,12 @@ Do
         WScript.Quit 3
     End If
     If DateDiff("s", startTime, Now) >= durationSeconds Then Exit Do
+    ' [処理解説] 次の処理まで指定されたミリ秒だけ待機します。
     WScript.Sleep intervalSeconds * 1000
 Loop
 WScript.Echo "Monitoring complete."
 
+' [処理解説] 数字以外の入力を除外してから整数へ変換し、指定範囲に収まるか判定します。
 Function ParseWholeNumber(text, minimum, maximum, value)
     Dim i, character
     ParseWholeNumber = False

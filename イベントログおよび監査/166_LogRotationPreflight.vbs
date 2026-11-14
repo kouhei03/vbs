@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim folderPath, ageDays, fso, folder, fileItem, cutoff, oldCount, oldBytes
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 166_LogRotationPreflight.vbs <folder> <age-days 1-3650>"
     WScript.Quit 2
@@ -35,6 +36,7 @@ WScript.Echo "Files older than " & ageDays & " days: " & oldCount
 WScript.Echo "Total bytes: " & oldBytes
 WScript.Echo "Preflight only; no files were compressed or deleted."
 
+' [処理解説] 数字以外の入力を除外してから整数へ変換し、指定範囲に収まるか判定します。
 Function ParseDays(text, value)
     Dim i, character
     ParseDays = False

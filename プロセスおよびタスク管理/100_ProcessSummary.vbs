@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, processes, process, count, bytes
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Process を照会し、ProcessId,WorkingSetSize を取得します。
 Set processes = service.ExecQuery("SELECT ProcessId,WorkingSetSize FROM Win32_Process")
 count = 0
 bytes = CDbl(0)

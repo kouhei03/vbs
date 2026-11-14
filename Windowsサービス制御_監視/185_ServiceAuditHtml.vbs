@@ -7,6 +7,7 @@
 ' 全サービス状態をローカルHTMLへ出力します。新規ファイルのみ作成し、既存ファイルは上書きしません。
 Option Explicit
 Dim fso, path, file, service, services, item
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 185_ServiceAuditHtml.vbs <new-html-path>"
     WScript.Quit 2
@@ -18,7 +19,9 @@ If fso.FileExists(path) Then
     WScript.Quit 2
 End If
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, State, StartMode を取得します。
 Set services = service.ExecQuery("SELECT Name, DisplayName, State, StartMode FROM Win32_Service")
+' [処理解説] 上書き引数をFalseにして、新しい出力ファイルのみを作成します。
 Set file = fso.CreateTextFile(path, False, True)
 file.WriteLine "<!doctype html><html><head><meta charset=""utf-8""><title>Service report</title></head><body><h1>Local services</h1><table><tr><th>Name</th><th>Display name</th><th>State</th><th>Start mode</th></tr>"
 For Each item In services
@@ -27,6 +30,7 @@ Next
 file.WriteLine "</table></body></html>"
 file.Close
 WScript.Echo "Report written: " & path
+' [処理解説] 値中のHTML特殊文字をエスケープして、データがタグとして解釈されるのを防ぎます。
 Function Html(value)
     Dim text
     text = CStr(value)

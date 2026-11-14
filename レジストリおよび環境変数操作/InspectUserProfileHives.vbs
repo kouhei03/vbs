@@ -7,6 +7,7 @@ Option Explicit
 Dim service, profiles, profile, fso, hivePath, hiveExists
 Set service = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
 Set fso = CreateObject("Scripting.FileSystemObject")
+' [処理解説] WMIの Win32_UserProfile を照会し、SID, LocalPath, Loaded を取得します。
 Set profiles = service.ExecQuery("SELECT SID, LocalPath, Loaded FROM Win32_UserProfile WHERE Special = FALSE")
 For Each profile In profiles
     hivePath = profile.LocalPath & "\NTUSER.DAT"

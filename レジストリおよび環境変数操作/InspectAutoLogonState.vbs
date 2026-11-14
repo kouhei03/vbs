@@ -6,6 +6,7 @@
 Option Explicit
 Dim registry, result, autoLogon, userName
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
 result = registry.GetStringValue(&H80000002, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon", "AutoAdminLogon", autoLogon)
 If result <> 0 Then autoLogon = "(not set)"
 WScript.Echo "AutoAdminLogon: " & autoLogon

@@ -13,6 +13,7 @@ If mappings.Count = 0 Then
     WScript.Echo "No network drives are mapped."
 Else
     WScript.Echo "Drive" & vbTab & "Network path"
+    ' [処理解説] EnumNetworkDrivesの結果はドライブ名とネットワークパスの対なので、2項目ずつ処理します。
     For index = 0 To mappings.Count - 1 Step 2
         WScript.Echo mappings.Item(index) & vbTab & mappings.Item(index + 1)
     Next

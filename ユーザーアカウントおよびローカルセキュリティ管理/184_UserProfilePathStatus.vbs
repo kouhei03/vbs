@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, profiles, profile
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_UserProfile を照会し、SID, LocalPath, Loaded, Special を取得します。
 Set profiles = service.ExecQuery( _
     "SELECT SID, LocalPath, Loaded, Special FROM Win32_UserProfile")
 WScript.Echo "SID" & vbTab & "Path" & vbTab & "Loaded" & vbTab & "Special"

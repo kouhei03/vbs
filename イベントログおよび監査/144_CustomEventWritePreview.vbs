@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim sourceName, eventId, messageText
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 3 Then
     WScript.Echo "Usage: cscript //nologo 144_CustomEventWritePreview.vbs <source-name> <event-id> <message>"
     WScript.Quit 2
@@ -31,6 +32,7 @@ WScript.Echo "Source name: " & sourceName
 WScript.Echo "Event ID: " & eventId
 WScript.Echo "Message length: " & Len(messageText)
 
+' [処理解説] 数字以外の入力を除外してから整数へ変換し、指定範囲に収まるか判定します。
 Function ParseEventId(text, value)
     Dim i, character
     ParseEventId = False

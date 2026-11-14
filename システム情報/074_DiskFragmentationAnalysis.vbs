@@ -12,6 +12,7 @@ For Each drive In fso.Drives
     If drive.DriveType = 2 And drive.IsReady Then
         found = True
         WScript.Echo "Analysis: " & drive.DriveLetter & ":"
+        ' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
         Set process = shell.Exec("defrag.exe " & drive.DriveLetter & ": /A /V")
         Do While Not process.StdOut.AtEndOfStream
             line = process.StdOut.ReadLine

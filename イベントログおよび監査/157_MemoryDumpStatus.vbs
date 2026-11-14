@@ -9,6 +9,7 @@ Dim shell, fso, systemRoot, dumpPath, dumpFile
 Set shell = CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 systemRoot = shell.ExpandEnvironmentStrings("%SystemRoot%")
+' [処理解説] Windowsフォルダーの標準パスだけを確認し、ダンプ内容は開きません。
 dumpPath = fso.BuildPath(systemRoot, "MEMORY.DMP")
 
 If fso.FileExists(dumpPath) Then

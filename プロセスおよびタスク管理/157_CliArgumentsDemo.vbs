@@ -7,6 +7,7 @@
 Option Explicit
 Dim i
 WScript.Echo "Argument count=" & WScript.Arguments.Count
+' [処理解説] 引数は0から始まる番号で取得します。
 For i=0 To WScript.Arguments.Count-1
     WScript.Echo "Argument " & i & "=" & WScript.Arguments(i)
 Next

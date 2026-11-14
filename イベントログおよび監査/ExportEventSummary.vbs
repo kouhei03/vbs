@@ -9,6 +9,7 @@ Option Explicit
 Dim logName, hours, outputPath, timeFilter, service, events, eventItem
 Dim fileSystem, outputFile
 
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 3 Then
     WScript.Echo "Usage: cscript //nologo ExportEventSummary.vbs <System|Application|Security> <hours 1-168> <new-csv-path>"
     WScript.Quit 2
@@ -31,14 +32,17 @@ If fileSystem.FileExists(outputPath) Then
 End If
 
 Set timeFilter = CreateObject("WbemScripting.SWbemDateTime")
+' [処理解説] 指定した期間の開始時刻をWMIの日時形式に変換して照会条件に使用します。
 timeFilter.SetVarDate DateAdd("h", -hours, Now), True
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_NTLogEvent を照会し、EventCode, SourceName, TimeGenerated, RecordNumber を取得します。
 Set events = service.ExecQuery( _
     "SELECT EventCode, SourceName, TimeGenerated, RecordNumber FROM " & _
     "Win32_NTLogEvent WHERE Logfile='" & logName & _
     "' AND TimeGenerated >= '" & timeFilter.Value & "'")
 
 On Error Resume Next
+' [処理解説] 上書き引数をFalseにして、新しい出力ファイルのみを作成します。
 Set outputFile = fileSystem.CreateTextFile(outputPath, False, True)
 If Err.Number <> 0 Then
     WScript.Echo "Could not create CSV file: " & Err.Description
@@ -61,6 +65,7 @@ Function IsAllowedLog(name)
         StrComp(name, "Security", vbTextCompare) = 0)
 End Function
 
+' [処理解説] 数字以外の入力を除外してから整数へ変換し、指定範囲に収まるか判定します。
 Function ParseHours(text, value)
     Dim i, ch
     ParseHours = False
@@ -80,6 +85,7 @@ Function EventTime(cimTime)
     EventTime = CStr(dateTime.GetVarDate(True))
 End Function
 
+' [処理解説] CSVの値を引用符で囲み、値中の引用符を二重化します。
 Function Csv(value)
     If IsNull(value) Or IsEmpty(value) Then value = ""
     Csv = """" & Replace(CStr(value), """", """""") & """"

@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim driveName, service, drives, drive, found
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 195_DisconnectDrivePreview.vbs <drive-letter>"
     WScript.Quit 2
@@ -18,6 +19,7 @@ If Len(driveName) <> 2 Or Right(driveName, 1) <> ":" Or _
     WScript.Quit 2
 End If
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_LogicalDisk を照会し、DeviceID, ProviderName を取得します。
 Set drives = service.ExecQuery( _
     "SELECT DeviceID, ProviderName FROM Win32_LogicalDisk WHERE DriveType=4")
 found = False

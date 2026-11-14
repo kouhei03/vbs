@@ -6,6 +6,7 @@
 
 Option Explicit
 Dim shell, environment, variableName, entry, separator, found
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo InspectEnvironmentRemovalTarget.vbs <variable-name>"
     WScript.Quit 2

@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim targetPath, principal, fso
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo 188_AclRemovalPreview.vbs <file-or-folder> <principal>"
     WScript.Quit 2

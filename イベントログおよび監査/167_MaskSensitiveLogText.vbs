@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim text, expression
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 167_MaskSensitiveLogText.vbs <text>"
     WScript.Quit 2
@@ -20,5 +21,6 @@ End If
 Set expression = New RegExp
 expression.Global = True
 expression.IgnoreCase = True
+' [処理解説] 指定したキー名と区切りに一致する値だけをマスクします。すべての機密情報を検出するものではありません。
 expression.Pattern = "(password|passwd|token|secret|api[_-]?key)\s*[:=]\s*[^;\s,]+"
 WScript.Echo expression.Replace(text, "$1=[REDACTED]")

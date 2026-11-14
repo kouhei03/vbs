@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, systems, system
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_OperatingSystem を照会し、ServicePackMajorVersion, ServicePackMinorVersion を取得します。
 Set systems = service.ExecQuery( _
     "SELECT ServicePackMajorVersion, ServicePackMinorVersion FROM Win32_OperatingSystem")
 

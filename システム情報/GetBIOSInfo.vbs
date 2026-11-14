@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, bioses, bios
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_BIOS を照会し、Manufacturer, SMBIOSBIOSVersion, ReleaseDate を取得します。
 Set bioses = service.ExecQuery( _
     "SELECT Manufacturer, SMBIOSBIOSVersion, ReleaseDate FROM Win32_BIOS")
 

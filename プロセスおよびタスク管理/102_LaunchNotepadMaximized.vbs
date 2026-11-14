@@ -6,5 +6,6 @@
 Option Explicit
 Dim shell, pid
 Set shell = CreateObject("WScript.Shell")
+' [処理解説] ウィンドウ表示形式3で最大化を指定し、終了を待たずに制御を戻します。
 pid = shell.Run("notepad.exe", 3, False)
 WScript.Echo "Notepad launch requested in maximized mode; return value=" & pid

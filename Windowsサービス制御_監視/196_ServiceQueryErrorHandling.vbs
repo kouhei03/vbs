@@ -15,6 +15,7 @@ If Err.Number <> 0 Then
     WScript.Echo "WMI connection failed: " & errorNumber & " " & errorDescription
     WScript.Quit 1
 End If
+' [処理解説] WMIの Win32_Service を照会し、Name を取得します。
 Set services = service.ExecQuery("SELECT Name FROM Win32_Service")
 If Err.Number <> 0 Then
     errorNumber = Err.Number

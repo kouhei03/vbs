@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\Microsoft\Windows\DeviceGuard")
+' [処理解説] WMIの Win32_DeviceGuard を照会し、VirtualizationBasedSecurityStatus, SecurityServicesConfigured, SecurityServicesRunning を取得します。
 Set records = service.ExecQuery("SELECT VirtualizationBasedSecurityStatus, SecurityServicesConfigured, SecurityServicesRunning FROM Win32_DeviceGuard")
 If records.Count = 0 Then
     WScript.Echo "No data returned for: VBS/HVCI稼働状態"
@@ -15,6 +16,7 @@ For Each record In records
     WScript.Echo "---"
     For Each fieldName In Array("VirtualizationBasedSecurityStatus", "SecurityServicesConfigured", "SecurityServicesRunning")
         fieldValue = record.Properties_.Item(fieldName).Value
+        ' [処理解説] 取得値がNULLまたは配列の場合を分け、表示できる文字列に整えます。
         If IsNull(fieldValue) Then
             WScript.Echo fieldName & ": (not reported)"
         ElseIf IsArray(fieldValue) Then

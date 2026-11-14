@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, systems, system
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_ComputerSystem を照会し、PartOfDomain, Domain, Workgroup を取得します。
 Set systems = service.ExecQuery( _
     "SELECT PartOfDomain, Domain, Workgroup FROM Win32_ComputerSystem")
 

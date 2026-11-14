@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, adapters, adapter, identity, classification
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_VideoController を照会し、Name, AdapterCompatibility, VideoProcessor, PNPDeviceID を取得します。
 Set adapters = service.ExecQuery("SELECT Name, AdapterCompatibility, VideoProcessor, PNPDeviceID FROM Win32_VideoController")
 For Each adapter In adapters
     identity = LCase(SafeText(adapter.Name) & " " & SafeText(adapter.AdapterCompatibility) & " " & SafeText(adapter.VideoProcessor))

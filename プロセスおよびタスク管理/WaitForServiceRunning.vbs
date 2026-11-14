@@ -9,6 +9,7 @@ Option Explicit
 Dim service, services, item, serviceName, timeoutText, timeoutSeconds
 Dim found, isRunning, startTime, index, character
 
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo WaitForServiceRunning.vbs <service-name> <timeout-seconds>"
     WScript.Quit 2
@@ -39,6 +40,7 @@ Set service = GetObject("winmgmts:\\.\root\cimv2")
 startTime = Now
 
 Do
+    ' [処理解説] WMIの Win32_Service を照会し、Name, State を取得します。
     Set services = service.ExecQuery( _
         "SELECT Name, State FROM Win32_Service")
     found = False
@@ -63,5 +65,6 @@ Do
         WScript.Echo "Timed out waiting for service: " & serviceName
         WScript.Quit 1
     End If
+    ' [処理解説] 次の処理まで指定されたミリ秒だけ待機します。
     WScript.Sleep 1000
 Loop

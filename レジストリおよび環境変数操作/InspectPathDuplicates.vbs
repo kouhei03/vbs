@@ -6,8 +6,10 @@
 Option Explicit
 Dim shell, pathValue, entries, seen, entry, normalized, foundDuplicate
 Set shell = CreateObject("WScript.Shell")
+' [処理解説] 環境変数は現在のプロセスのスコープを参照します。
 pathValue = shell.Environment("PROCESS")("PATH")
 Set seen = CreateObject("Scripting.Dictionary")
+' [処理解説] 辞書のキーは大文字・小文字を区別せず照合します。
 seen.CompareMode = vbTextCompare
 foundDuplicate = False
 entries = Split(pathValue, ";")

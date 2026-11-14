@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, modules, module, dataWidth, totalWidth
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_PhysicalMemory を照会し、DeviceLocator, DataWidth, TotalWidth を取得します。
 Set modules = service.ExecQuery("SELECT DeviceLocator, DataWidth, TotalWidth FROM Win32_PhysicalMemory")
 If modules.Count = 0 Then
     WScript.Echo "No physical memory modules reported."

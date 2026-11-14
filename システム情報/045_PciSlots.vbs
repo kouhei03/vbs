@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_SystemSlot を照会し、SlotDesignation, ConnectorType, CurrentUsage, Status を取得します。
 Set records = service.ExecQuery("SELECT SlotDesignation, ConnectorType, CurrentUsage, Status FROM Win32_SystemSlot")
 If records.Count = 0 Then
     WScript.Echo "No data returned for: PCI/PCIeスロット構成"
@@ -15,6 +16,7 @@ For Each record In records
     WScript.Echo "---"
     For Each fieldName In Array("SlotDesignation", "ConnectorType", "CurrentUsage", "Status")
         fieldValue = record.Properties_.Item(fieldName).Value
+        ' [処理解説] 取得値がNULLまたは配列の場合を分け、表示できる文字列に整えます。
         If IsNull(fieldValue) Then
             WScript.Echo fieldName & ": (not reported)"
         ElseIf IsArray(fieldValue) Then

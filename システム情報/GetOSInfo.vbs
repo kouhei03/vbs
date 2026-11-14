@@ -17,6 +17,7 @@ If Err.Number <> 0 Then
 End If
 
 Err.Clear
+' [処理解説] WMIの Win32_OperatingSystem を照会し、Caption, Version, BuildNumber を取得します。
 Set operatingSystems = wmiService.ExecQuery( _
     "SELECT Caption, Version, BuildNumber FROM Win32_OperatingSystem")
 If Err.Number <> 0 Then

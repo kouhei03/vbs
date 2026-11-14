@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, products, product, licensedCount, statusName
 Set service = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+' [処理解説] WMIの SoftwareLicensingProduct を照会し、Name, LicenseStatus を取得します。
 Set products = service.ExecQuery("SELECT Name, LicenseStatus FROM SoftwareLicensingProduct WHERE PartialProductKey IS NOT NULL")
 licensedCount = 0
 For Each product In products

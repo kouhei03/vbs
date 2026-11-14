@@ -7,6 +7,7 @@ Option Explicit
 Dim shell, process, line, commandLine
 Set shell = CreateObject("WScript.Shell")
 commandLine = "powershell.exe -NoProfile -NonInteractive -Command " & Chr(34) & "Get-PnpDevice -Class AudioEndpoint | Select-Object FriendlyName,Status,InstanceId | Format-List" & Chr(34)
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec(commandLine)
 Do While Not process.StdOut.AtEndOfStream
     line = process.StdOut.ReadLine

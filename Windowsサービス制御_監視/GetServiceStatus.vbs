@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim service, services, item, serviceName, found
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo GetServiceStatus.vbs <service-name>"
     WScript.Quit 2
@@ -18,6 +19,7 @@ If Len(serviceName) = 0 Then
 End If
 
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, State を取得します。
 Set services = service.ExecQuery( _
     "SELECT Name, DisplayName, State FROM Win32_Service")
 

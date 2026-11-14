@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim service, users, user, userName, found
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo GetLocalUserStatus.vbs <user-name>"
     WScript.Quit 2
@@ -18,6 +19,7 @@ If Len(userName) = 0 Then
 End If
 
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_UserAccount を照会し、Name, Disabled, Lockout, PasswordExpires を取得します。
 Set users = service.ExecQuery( _
     "SELECT Name, Disabled, Lockout, PasswordExpires FROM Win32_UserAccount " & _
     "WHERE LocalAccount=True")

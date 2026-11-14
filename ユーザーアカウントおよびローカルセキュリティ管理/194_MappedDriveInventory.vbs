@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, drives, drive
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_LogicalDisk を照会し、DeviceID, ProviderName, FreeSpace, Size を取得します。
 Set drives = service.ExecQuery( _
     "SELECT DeviceID, ProviderName, FreeSpace, Size FROM Win32_LogicalDisk WHERE DriveType=4")
 WScript.Echo "Drive" & vbTab & "Provider" & vbTab & "FreeBytes" & vbTab & "SizeBytes"

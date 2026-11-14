@@ -7,6 +7,7 @@ Option Explicit
 Dim registry, result, settingName, settingValue
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
 For Each settingName In Array("Hidden", "HideFileExt", "ShowSuperHidden")
+    ' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
     result = registry.GetDWORDValue(&H80000001, "Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", settingName, settingValue)
     If result = 0 Then
         WScript.Echo settingName & "=" & settingValue

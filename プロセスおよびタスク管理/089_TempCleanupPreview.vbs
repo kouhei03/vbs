@@ -17,6 +17,7 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 Set shell = CreateObject("WScript.Shell")
 tempPath = shell.ExpandEnvironmentStrings("%TEMP%")
 Set folder = fso.GetFolder(tempPath)
+' [処理解説] 指定日数より古いTEMP直下のファイルを候補として表示し、削除はしません。
 cutoff = DateAdd("d", -ageDays, Now)
 found = False
 For Each file In folder.Files

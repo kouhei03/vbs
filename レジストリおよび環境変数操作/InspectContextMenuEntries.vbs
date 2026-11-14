@@ -7,6 +7,7 @@ Option Explicit
 Dim registry, result, names, subKey, item, child
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
 For Each item In Array("*\shell", "Directory\shell", "Directory\Background\shell")
+    ' [処理解説] 指定キーの直下のサブキーを列挙します。再帰的な走査ではありません。
     result = registry.EnumKey(&H80000000, item, names)
     WScript.Echo "HKCR\" & item
     If result = 0 And IsArray(names) Then

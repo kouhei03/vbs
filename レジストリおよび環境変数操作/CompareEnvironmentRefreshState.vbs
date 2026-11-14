@@ -7,7 +7,9 @@ Option Explicit
 Dim shell, registry, processPath, systemPath, userPath, result
 Set shell = CreateObject("WScript.Shell")
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 環境変数は現在のプロセスのスコープを参照します。
 processPath = shell.Environment("PROCESS")("PATH")
+' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
 result = registry.GetExpandedStringValue(&H80000002, "SYSTEM\CurrentControlSet\Control\Session Manager\Environment", "Path", systemPath)
 If result = 0 Then
     WScript.Echo "System registry PATH length=" & Len(systemPath)

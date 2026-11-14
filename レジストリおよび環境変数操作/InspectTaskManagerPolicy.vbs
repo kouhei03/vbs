@@ -6,6 +6,7 @@
 Option Explicit
 Dim registry, result, disabled
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
 result = registry.GetDWORDValue(&H80000001, "Software\Microsoft\Windows\CurrentVersion\Policies\System", "DisableTaskMgr", disabled)
 If result = 0 Then
     WScript.Echo "DisableTaskMgr=" & disabled

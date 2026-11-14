@@ -8,6 +8,7 @@
 Option Explicit
 Dim debugMode, argument
  debugMode = False
+' [処理解説] /verboseの有無を大文字・小文字を区別せずに確認します。
 For Each argument In WScript.Arguments
     If LCase(argument) = "/verbose" Then debugMode = True
 Next

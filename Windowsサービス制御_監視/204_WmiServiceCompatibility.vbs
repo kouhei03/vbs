@@ -13,6 +13,7 @@ If Err.Number <> 0 Then
     WScript.Quit 1
 End If
 Err.Clear
+' [処理解説] WMIの Win32_Service を照会し、Name を取得します。
 Set services = service.ExecQuery("SELECT Name FROM Win32_Service")
 If Err.Number <> 0 Then
     WScript.Echo "Win32_Service query unavailable: " & Err.Description
@@ -20,6 +21,7 @@ If Err.Number <> 0 Then
 End If
 WScript.Echo "Win32_Service available; count=" & services.Count
 Err.Clear
+' [処理解説] WMIの Win32_DependentService を照会し、Antecedent, Dependent を取得します。
 Set relations = service.ExecQuery("SELECT Antecedent, Dependent FROM Win32_DependentService")
 If Err.Number <> 0 Then
     WScript.Echo "Win32_DependentService unavailable: " & Err.Description

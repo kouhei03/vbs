@@ -6,5 +6,6 @@
 Option Explicit
 
 Dim network
+' [処理解説] WScript.Networkからローカルコンピューター名を取得します。
 Set network = CreateObject("WScript.Network")
 WScript.Echo "Computer name: " & network.ComputerName

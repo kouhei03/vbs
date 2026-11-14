@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, processes, process, bytes
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Process を照会し、Name, ProcessId, PrivatePageCount を取得します。
 Set processes = service.ExecQuery( _
     "SELECT Name, ProcessId, PrivatePageCount FROM Win32_Process")
 

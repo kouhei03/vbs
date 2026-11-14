@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim threshold, service, disks, disk, freePercent
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 161_DiskSpaceWarningPreview.vbs <free-percent-threshold 1-50>"
     WScript.Quit 2
@@ -16,6 +17,7 @@ If Not ParsePercent(WScript.Arguments(0), threshold) Then
     WScript.Quit 2
 End If
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_LogicalDisk を照会し、DeviceID, Size, FreeSpace を取得します。
 Set disks = service.ExecQuery( _
     "SELECT DeviceID, Size, FreeSpace FROM Win32_LogicalDisk WHERE DriveType=3")
 For Each disk In disks
@@ -36,6 +38,7 @@ For Each disk In disks
 Next
 WScript.Echo "Console preview only; no warning event was generated."
 
+' [処理解説] 数字以外の入力を除外してから整数へ変換し、指定範囲に収まるか判定します。
 Function ParsePercent(text, value)
     Dim i, character
     ParsePercent = False

@@ -8,7 +8,9 @@ Option Explicit
 Dim service, services, sample
 Set service = GetObject("winmgmts:\\.\root\cimv2")
 For sample = 1 To 3
+    ' [処理解説] WMIの Win32_Service を照会し、Name を取得します。
     Set services = service.ExecQuery("SELECT Name FROM Win32_Service")
     WScript.Echo CStr(Now) & vbTab & "Sample=" & sample & vbTab & "Services=" & services.Count
+    ' [処理解説] 次の処理まで指定されたミリ秒だけ待機します。
     If sample < 3 Then WScript.Sleep 10000
 Next

@@ -8,6 +8,7 @@ Option Explicit
 Dim shell, process, line, auditPolPath
 Set shell = CreateObject("WScript.Shell")
 auditPolPath = shell.ExpandEnvironmentStrings("%SystemRoot%\System32\auditpol.exe")
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec(Chr(34) & auditPolPath & Chr(34) & " /get /category:*")
 Do While Not process.StdOut.AtEndOfStream
     line = process.StdOut.ReadLine

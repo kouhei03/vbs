@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, records, process, names, parents, pid, parentPid, chain, depth
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Process を照会し、Name,ProcessId,ParentProcessId を取得します。
 Set records = service.ExecQuery("SELECT Name,ProcessId,ParentProcessId FROM Win32_Process")
 Set names = CreateObject("Scripting.Dictionary")
 Set parents = CreateObject("Scripting.Dictionary")

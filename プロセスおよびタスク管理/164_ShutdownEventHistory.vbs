@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, events, eventRecord, count
 Set service=GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_NTLogEvent を照会し、EventCode,TimeGenerated,RecordNumber を取得します。
 Set events=service.ExecQuery("SELECT EventCode,TimeGenerated,RecordNumber FROM Win32_NTLogEvent WHERE Logfile='System' AND (EventCode='1074' OR EventCode='6006' OR EventCode='6008')")
 count=0
 For Each eventRecord In events

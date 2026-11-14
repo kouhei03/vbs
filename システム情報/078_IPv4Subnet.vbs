@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, adapters, adapter, addresses, subnets, index, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_NetworkAdapterConfiguration を照会し、Description, IPAddress, IPSubnet を取得します。
 Set adapters = service.ExecQuery("SELECT Description, IPAddress, IPSubnet FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = TRUE")
 found = False
 For Each adapter In adapters

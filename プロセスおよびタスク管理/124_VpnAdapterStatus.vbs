@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, adapters, adapter, label
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_NetworkAdapter を照会し、Name,NetConnectionStatus,NetEnabled,PhysicalAdapter を取得します。
 Set adapters = service.ExecQuery("SELECT Name,NetConnectionStatus,NetEnabled,PhysicalAdapter FROM Win32_NetworkAdapter")
 For Each adapter In adapters
     label = LCase(CStr(adapter.Name))

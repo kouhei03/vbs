@@ -8,6 +8,7 @@ Option Explicit
 
 Dim service, settings, setting, shareName, descriptor, result
 Dim entry, trustee, trusteeName, accessType
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo GetShareAcl.vbs <share-name>"
     WScript.Quit 2
@@ -19,6 +20,7 @@ If Len(shareName) = 0 Then
 End If
 
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_LogicalShareSecuritySetting を照会し、Name を取得します。
 Set settings = service.ExecQuery( _
     "SELECT Name FROM Win32_LogicalShareSecuritySetting")
 For Each setting In settings

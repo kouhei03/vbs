@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, groups, group, members, member, domainName, memberName
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Group を照会し、Name, SID を取得します。
 Set groups = service.ExecQuery( _
     "SELECT Name, SID FROM Win32_Group WHERE SID='S-1-5-32-544'")
 For Each group In groups

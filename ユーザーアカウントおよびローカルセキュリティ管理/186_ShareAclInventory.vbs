@@ -8,6 +8,7 @@ Option Explicit
 Dim service, settings, setting, descriptor, result, entry, trustee
 Dim domainName, trusteeName
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_LogicalShareSecuritySetting を照会し、Name を取得します。
 Set settings = service.ExecQuery( _
     "SELECT Name FROM Win32_LogicalShareSecuritySetting")
 For Each setting In settings

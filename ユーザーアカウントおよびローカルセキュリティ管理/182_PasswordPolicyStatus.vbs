@@ -8,6 +8,7 @@ Option Explicit
 Dim shell, process, output, errorOutput, netPath
 Set shell = CreateObject("WScript.Shell")
 netPath = shell.ExpandEnvironmentStrings("%SystemRoot%\System32\net.exe")
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec(Chr(34) & netPath & Chr(34) & " accounts")
 output = process.StdOut.ReadAll
 errorOutput = process.StdErr.ReadAll

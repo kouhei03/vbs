@@ -6,18 +6,22 @@
 
 Option Explicit
 Dim service, records, processName, validator, timeoutSeconds, wasRunning, elapsed
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 2 Then WScript.Echo "Usage: cscript //nologo 086_WatchProcessExit.vbs <process.exe> <timeout-seconds-1-300>": WScript.Quit 2
 processName = WScript.Arguments(0)
 Set validator = New RegExp
+' [処理解説] 引数に許可する文字を限定して名前を検証します。
 validator.Pattern = "^[A-Za-z0-9_.-]+$"
 If Not validator.Test(processName) Or Not IsNumeric(WScript.Arguments(1)) Then WScript.Echo "Invalid arguments.": WScript.Quit 2
 timeoutSeconds = CLng(WScript.Arguments(1))
 If timeoutSeconds < 1 Or timeoutSeconds > 300 Then WScript.Echo "Timeout must be 1..300 seconds.": WScript.Quit 2
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Process を照会し、ProcessId を取得します。
 Set records = service.ExecQuery("SELECT ProcessId FROM Win32_Process WHERE Name = '" & processName & "'")
 wasRunning = (records.Count > 0)
 If Not wasRunning Then WScript.Echo "Process is not running: " & processName: WScript.Quit 1
 For elapsed = 1 To timeoutSeconds
+    ' [処理解説] 次の処理まで指定されたミリ秒だけ待機します。
     WScript.Sleep 1000
     Set records = service.ExecQuery("SELECT ProcessId FROM Win32_Process WHERE Name = '" & processName & "'")
     If records.Count = 0 Then WScript.Echo "Process exit observed after " & elapsed & " seconds.": WScript.Quit 0

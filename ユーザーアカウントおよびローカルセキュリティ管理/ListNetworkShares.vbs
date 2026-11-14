@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, shares, share
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Share を照会し、Name, Path, Type, Description を取得します。
 Set shares = service.ExecQuery( _
     "SELECT Name, Path, Type, Description FROM Win32_Share")
 

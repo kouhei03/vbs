@@ -7,6 +7,7 @@
 ' 外部許可リストとローカルサービス名を比較し、不一致を表示します。削除や無効化はしません。
 Option Explicit
 Dim fso, inputFile, allowed, service, services, item, path, lineText, found, allowedName
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 169_ServiceAllowlistAudit.vbs <allowlist-file>"
     WScript.Quit 2
@@ -26,6 +27,7 @@ Do Until inputFile.AtEndOfStream
 Loop
 inputFile.Close
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, State を取得します。
 Set services = service.ExecQuery("SELECT Name, DisplayName, State FROM Win32_Service")
 For Each item In services
     If Not allowed.Exists(item.Name) Then WScript.Echo "Not in allowlist: " & item.Name & vbTab & item.DisplayName & vbTab & item.State

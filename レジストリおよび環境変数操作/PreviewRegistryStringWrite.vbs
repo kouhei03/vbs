@@ -19,6 +19,7 @@ If InStr("|HKCU|HKLM|HKCR|HKU|HKCC|", "|" & hiveName & "|") = 0 Then
     WScript.Echo "Unsupported registry hive: " & hiveName
     WScript.Quit 2
 End If
+' [処理解説] 指定された値の内容は表示せず、書き込み対象と文字数だけを確認します。
 WScript.Echo "READ-ONLY PREVIEW; no registry value was written."
 WScript.Echo "Target: " & hiveName & "\" & subKey & "\" & valueName
 WScript.Echo "Proposed REG_SZ character count: " & Len(proposedValue)

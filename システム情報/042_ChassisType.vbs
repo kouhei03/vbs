@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, enclosures, enclosure, code, label
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_SystemEnclosure を照会し、ChassisTypes を取得します。
 Set enclosures = service.ExecQuery("SELECT ChassisTypes FROM Win32_SystemEnclosure")
 If enclosures.Count = 0 Then
     WScript.Echo "No chassis information returned."

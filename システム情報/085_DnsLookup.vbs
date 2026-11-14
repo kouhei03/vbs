@@ -6,6 +6,7 @@
 
 Option Explicit
 Dim hostname, validator, shell, process, line
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 085_DnsLookup.vbs <hostname>"
     WScript.Quit 2
@@ -18,6 +19,7 @@ If Not validator.Test(hostname) Then
     WScript.Quit 2
 End If
 Set shell = CreateObject("WScript.Shell")
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec("nslookup.exe " & hostname)
 Do While Not process.StdOut.AtEndOfStream
     line = process.StdOut.ReadLine

@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, drives, drive, usedBytes, usedPercent
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_LogicalDisk を照会し、DeviceID, Size, FreeSpace を取得します。
 Set drives = service.ExecQuery( _
     "SELECT DeviceID, Size, FreeSpace FROM Win32_LogicalDisk WHERE DriveType=3")
 

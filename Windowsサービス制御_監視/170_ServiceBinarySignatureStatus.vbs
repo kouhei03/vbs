@@ -8,18 +8,21 @@
 Option Explicit
 Dim serviceName, validator, service, services, item, found, rawPath, executablePath, exePosition, quotePosition
 Dim shell, psCommand, commandLine, process, line
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 170_ServiceBinarySignatureStatus.vbs <service-name>"
     WScript.Quit 2
 End If
 serviceName = Trim(WScript.Arguments(0))
 Set validator = New RegExp
+' [処理解説] 引数に許可する文字を限定して名前を検証します。
 validator.Pattern = "^[A-Za-z0-9_.-]+$"
 If Not validator.Test(serviceName) Then
     WScript.Echo "Invalid service name."
     WScript.Quit 2
 End If
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, PathName を取得します。
 Set services = service.ExecQuery("SELECT Name, PathName FROM Win32_Service")
 found = False
 For Each item In services
@@ -46,6 +49,7 @@ For Each item In services
             executablePath = shell.ExpandEnvironmentStrings(executablePath)
             psCommand = "Get-AuthenticodeSignature -LiteralPath '" & Replace(executablePath, "'", "''") & "' | Select-Object Status,@{Name='Publisher';Expression={$_.SignerCertificate.Subject}} | Format-List"
             commandLine = "powershell.exe -NoProfile -NonInteractive -Command " & Chr(34) & psCommand & Chr(34)
+            ' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
             Set process = shell.Exec(commandLine)
             Do While Not process.StdOut.AtEndOfStream
                 line = process.StdOut.ReadLine

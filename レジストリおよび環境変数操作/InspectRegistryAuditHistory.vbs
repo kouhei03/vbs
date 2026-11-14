@@ -6,6 +6,7 @@
 Option Explicit
 Dim shell, process, line
 Set shell = CreateObject("WScript.Shell")
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec("wevtutil.exe qe Security /q:" & Chr(34) & "*[System[(EventID=4657)]]" & Chr(34) & " /c:20 /rd:true /f:text")
 Do While Not process.StdOut.AtEndOfStream
     line = process.StdOut.ReadLine

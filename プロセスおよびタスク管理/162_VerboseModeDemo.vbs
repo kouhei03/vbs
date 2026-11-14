@@ -7,6 +7,7 @@
 Option Explicit
 Dim verbose, i
 verbose=False
+' [処理解説] /verboseが指定された場合だけ追加の診断情報を表示します。
 For i=0 To WScript.Arguments.Count-1
     If LCase(WScript.Arguments(i))="/verbose" Then verbose=True
 Next

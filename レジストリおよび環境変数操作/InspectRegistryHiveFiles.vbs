@@ -8,6 +8,7 @@ Dim fso, shell, root, hiveName, filePath, file
 Set fso = CreateObject("Scripting.FileSystemObject")
 Set shell = CreateObject("WScript.Shell")
 root = shell.ExpandEnvironmentStrings("%SystemRoot%") & "\System32\Config"
+' [処理解説] 標準ハイブのファイル情報を列挙します。ファイル情報だけではハイブの整合性を判定できません。
 For Each hiveName In Array("SYSTEM", "SOFTWARE", "SAM", "SECURITY", "DEFAULT")
     filePath = root & "\" & hiveName
     If fso.FileExists(filePath) Then

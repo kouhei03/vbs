@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, processors, processor, architectureName
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Processor を照会し、Architecture, AddressWidth, DataWidth を取得します。
 Set processors = service.ExecQuery("SELECT Architecture, AddressWidth, DataWidth FROM Win32_Processor")
 For Each processor In processors
     Select Case processor.Architecture

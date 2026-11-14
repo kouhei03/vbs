@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim inputPath, fso, inputFile, expression, line, count, uniqueNames
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 168_ServerCollectionScopePreview.vbs <server-list-file>"
     WScript.Quit 2
@@ -25,6 +26,7 @@ Set expression = New RegExp
 expression.Pattern = "^[A-Za-z0-9][A-Za-z0-9.-]{0,252}$"
 expression.IgnoreCase = True
 Set uniqueNames = CreateObject("Scripting.Dictionary")
+' [処理解説] 辞書のキーは大文字・小文字を区別せず照合します。
 uniqueNames.CompareMode = vbTextCompare
 Set inputFile = fso.OpenTextFile(inputPath, 1, False)
 Do Until inputFile.AtEndOfStream

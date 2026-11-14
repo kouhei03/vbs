@@ -7,6 +7,7 @@ Option Explicit
 Dim percent
 For percent=0 To 100 Step 10
     WScript.StdOut.Write "Progress: " & percent & "%" & vbCr
+    ' [処理解説] 次の処理まで指定されたミリ秒だけ待機します。
     WScript.Sleep 100
 Next
 WScript.StdOut.WriteLine "Progress: 100%"

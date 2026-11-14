@@ -7,6 +7,7 @@
 Option Explicit
 
 Dim ruleName, policy, rules, rule, found
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 197_FirewallRuleRemovalPreview.vbs <rule-name>"
     WScript.Quit 2

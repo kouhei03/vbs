@@ -6,5 +6,6 @@
 Option Explicit
 Dim service, processes
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Process を照会し、ProcessId を取得します。
 Set processes = service.ExecQuery("SELECT ProcessId FROM Win32_Process")
 WScript.Echo "Current local process count=" & processes.Count

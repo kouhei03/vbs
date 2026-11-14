@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, boards, board
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_BaseBoard を照会し、Manufacturer, Product を取得します。
 Set boards = service.ExecQuery( _
     "SELECT Manufacturer, Product FROM Win32_BaseBoard")
 

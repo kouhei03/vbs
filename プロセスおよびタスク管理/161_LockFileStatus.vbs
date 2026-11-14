@@ -7,6 +7,7 @@ Option Explicit
 Dim fso, shell, lockPath
 Set fso=CreateObject("Scripting.FileSystemObject")
 Set shell=CreateObject("WScript.Shell")
+' [処理解説] TEMPにある固定名のロックファイルを確認します。ファイルの作成・削除はしません。
 lockPath=shell.ExpandEnvironmentStrings("%TEMP%") & "\vbs-process-example.lock"
 If fso.FileExists(lockPath) Then
     WScript.Echo "Lock file exists: " & lockPath

@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, users, account
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_UserAccount を照会し、Name, SID, Disabled, Lockout を取得します。
 Set users = service.ExecQuery( _
     "SELECT Name, SID, Disabled, Lockout FROM Win32_UserAccount WHERE LocalAccount=True")
 WScript.Echo "Name" & vbTab & "SID" & vbTab & "Disabled" & vbTab & "Locked"

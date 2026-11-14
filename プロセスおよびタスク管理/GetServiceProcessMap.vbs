@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, services, item
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, State, ProcessId を取得します。
 Set services = service.ExecQuery( _
     "SELECT Name, DisplayName, State, ProcessId FROM Win32_Service")
 

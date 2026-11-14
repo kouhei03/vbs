@@ -6,6 +6,7 @@
 
 Option Explicit
 Dim registry, imageName, subKey, result, names, types, i
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo InspectIFEOBlockSettings.vbs <image-name.exe>"
     WScript.Quit 2
@@ -17,6 +18,7 @@ If InStr(imageName, "\") > 0 Or InStr(imageName, "/") > 0 Then
 End If
 subKey = "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\" & imageName
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 指定キーの値名と型を列挙します。値データはこの操作では取得しません。
 result = registry.EnumValues(&H80000002, subKey, names, types)
 If result <> 0 Then
     WScript.Echo "IFEO key unavailable; WMI return code: " & result

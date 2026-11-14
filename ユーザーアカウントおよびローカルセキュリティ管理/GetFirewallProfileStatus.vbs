@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, profiles, profile
 Set service = GetObject("winmgmts:\\.\root\standardcimv2")
+' [処理解説] WMIの MSFT_NetFirewallProfile を照会し、Name, Enabled を取得します。
 Set profiles = service.ExecQuery( _
     "SELECT Name, Enabled FROM MSFT_NetFirewallProfile")
 

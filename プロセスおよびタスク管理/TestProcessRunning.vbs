@@ -8,6 +8,7 @@ Option Explicit
 
 Dim service, processes, process, processName, found, matchCount
 
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo TestProcessRunning.vbs <process-name>"
     WScript.Quit 2
@@ -20,6 +21,7 @@ If Len(processName) = 0 Then
 End If
 
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Process を照会し、Name, ProcessId を取得します。
 Set processes = service.ExecQuery( _
     "SELECT Name, ProcessId FROM Win32_Process")
 

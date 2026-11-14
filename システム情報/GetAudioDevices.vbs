@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, devices, device
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_SoundDevice を照会し、Name, Manufacturer, Status を取得します。
 Set devices = service.ExecQuery( _
     "SELECT Name, Manufacturer, Status FROM Win32_SoundDevice")
 

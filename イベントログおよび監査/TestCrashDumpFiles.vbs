@@ -11,6 +11,7 @@ Set fileSystem = CreateObject("Scripting.FileSystemObject")
 Set shell = CreateObject("WScript.Shell")
 windowsPath = shell.ExpandEnvironmentStrings("%SystemRoot%")
 
+' [処理解説] 標準のMEMORY.DMPとMinidumpフォルダーの存在を確認します。
 dumpPath = fileSystem.BuildPath(windowsPath, "MEMORY.DMP")
 If fileSystem.FileExists(dumpPath) Then
     WScript.Echo "Memory dump exists: " & dumpPath

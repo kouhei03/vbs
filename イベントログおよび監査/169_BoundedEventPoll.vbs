@@ -8,6 +8,7 @@ Option Explicit
 
 Dim eventId, minutes, intervalSeconds, service, filter, events
 Dim eventItem, elapsed, count, previousCount
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 3 Then
     WScript.Echo "Usage: cscript //nologo 169_BoundedEventPoll.vbs <event-id> <minutes 1-5> <interval-seconds 5-30>"
     WScript.Quit 2
@@ -29,7 +30,9 @@ Set service = GetObject("winmgmts:\\.\root\cimv2")
 previousCount = -1
 For elapsed = 0 To minutes * 60 Step intervalSeconds
     Set filter = CreateObject("WbemScripting.SWbemDateTime")
+    ' [処理解説] 指定した期間の開始時刻をWMIの日時形式に変換して照会条件に使用します。
     filter.SetVarDate DateAdd("s", -elapsed, Now), True
+    ' [処理解説] WMIの Win32_NTLogEvent を照会し、EventCode を取得します。
     Set events = service.ExecQuery( _
         "SELECT EventCode FROM Win32_NTLogEvent WHERE Logfile='System' " & _
         "AND EventCode=" & eventId & " AND TimeGenerated >= '" & filter.Value & "'")
@@ -41,10 +44,12 @@ For elapsed = 0 To minutes * 60 Step intervalSeconds
         WScript.Echo "Elapsed seconds=" & elapsed & "; matching events in window=" & count
         previousCount = count
     End If
+    ' [処理解説] 次の処理まで指定されたミリ秒だけ待機します。
     If elapsed < minutes * 60 Then WScript.Sleep intervalSeconds * 1000
 Next
 WScript.Echo "Bounded observation ended."
 
+' [処理解説] 数字以外の入力を除外してから整数へ変換し、指定範囲に収まるか判定します。
 Function ParseInteger(text, minimum, maximum, value)
     Dim i, character
     ParseInteger = False

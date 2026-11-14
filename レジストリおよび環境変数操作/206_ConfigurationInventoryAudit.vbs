@@ -54,6 +54,7 @@ For index = 0 To UBound(targets)
     hiveName = fields(0)
     subKey = fields(1)
 
+    ' [処理解説] 入力されたハイブ名をStdRegProvで使用する定数に対応付けます。
     Select Case hiveName
         Case "HKCR": hive = &H80000000
         Case "HKCU": hive = &H80000001
@@ -65,11 +66,13 @@ For index = 0 To UBound(targets)
             WScript.Quit 1
     End Select
 
+    ' [処理解説] 指定キーの直下のサブキーを列挙します。再帰的な走査ではありません。
     result = registry.EnumKey(hive, subKey, subKeys)
     If result = 0 Then
         subkeyCount = 0
         If IsArray(subKeys) Then subkeyCount = UBound(subKeys) + 1
 
+        ' [処理解説] 指定キーの値名と型を列挙します。値データはこの操作では取得しません。
         result = registry.EnumValues(hive, subKey, valueNames, valueTypes)
         valueCount = 0
         If result = 0 And IsArray(valueNames) Then valueCount = UBound(valueNames) + 1

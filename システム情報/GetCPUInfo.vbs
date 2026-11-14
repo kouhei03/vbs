@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, processors, processor
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Processor を照会し、Name, MaxClockSpeed, NumberOfCores, NumberOfLogicalProcessors を取得します。
 Set processors = service.ExecQuery( _
     "SELECT Name, MaxClockSpeed, NumberOfCores, NumberOfLogicalProcessors " & _
     "FROM Win32_Processor")

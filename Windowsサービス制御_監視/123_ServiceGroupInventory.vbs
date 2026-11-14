@@ -7,11 +7,13 @@
 Option Explicit
 Dim service, services, item, shell, registryPath, groupName
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, State を取得します。
 Set services = service.ExecQuery("SELECT Name, DisplayName, State FROM Win32_Service")
 Set shell = CreateObject("WScript.Shell")
 For Each item In services
     registryPath = "HKLM\SYSTEM\CurrentControlSet\Services\" & item.Name & "\Group"
     On Error Resume Next
+    ' [処理解説] レジストリの現在値を読み取ります。設定値は変更しません。
     groupName = shell.RegRead(registryPath)
     If Err.Number <> 0 Then
         groupName = "(not set or unreadable)"

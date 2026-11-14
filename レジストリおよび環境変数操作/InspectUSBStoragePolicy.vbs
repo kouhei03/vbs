@@ -6,6 +6,7 @@
 Option Explicit
 Dim registry, result, startValue
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
 result = registry.GetDWORDValue(&H80000002, "SYSTEM\CurrentControlSet\Services\USBSTOR", "Start", startValue)
 If result <> 0 Then
     WScript.Echo "USBSTOR Start value unavailable; WMI return code: " & result

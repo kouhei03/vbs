@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, relations, relation
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_DependentService を照会し、Antecedent, Dependent を取得します。
 Set relations = service.ExecQuery( _
     "SELECT Antecedent, Dependent FROM Win32_DependentService")
 

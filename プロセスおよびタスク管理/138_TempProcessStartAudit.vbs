@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, processes, process, shell, tempPath, pathValue, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Process を照会し、Name,ProcessId,ExecutablePath,CreationDate を取得します。
 Set processes = service.ExecQuery("SELECT Name,ProcessId,ExecutablePath,CreationDate FROM Win32_Process")
 Set shell = CreateObject("WScript.Shell")
 tempPath = LCase(shell.ExpandEnvironmentStrings("%TEMP%"))

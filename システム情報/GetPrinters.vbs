@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, printers, printer
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Printer を照会し、Name, Default, Network, Local を取得します。
 Set printers = service.ExecQuery( _
     "SELECT Name, Default, Network, Local FROM Win32_Printer")
 

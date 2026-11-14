@@ -8,6 +8,7 @@ Option Explicit
 Dim shell, process, line, ruleCount, netshPath
 Set shell = CreateObject("WScript.Shell")
 netshPath = shell.ExpandEnvironmentStrings("%SystemRoot%\System32\netsh.exe")
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec(Chr(34) & netshPath & Chr(34) & _
     " advfirewall consec show rule name=all")
 ruleCount = 0

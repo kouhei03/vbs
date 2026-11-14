@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, monitors, monitor, monitorCount
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_DesktopMonitor を照会し、Name, PNPDeviceID, ScreenWidth, ScreenHeight, Status を取得します。
 Set monitors = service.ExecQuery("SELECT Name, PNPDeviceID, ScreenWidth, ScreenHeight, Status FROM Win32_DesktopMonitor")
 monitorCount = monitors.Count
 WScript.Echo "WMI-reported monitor count: " & monitorCount

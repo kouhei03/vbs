@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, adapters, adapter
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_VideoController を照会し、Name, Status, Availability, VideoModeDescription を取得します。
 Set adapters = service.ExecQuery("SELECT Name, Status, Availability, VideoModeDescription FROM Win32_VideoController")
 For Each adapter In adapters
     WScript.Echo adapter.Name & " Status=" & adapter.Status & " Availability=" & adapter.Availability

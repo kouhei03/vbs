@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, batteries, battery, stateName
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Battery を照会し、DeviceID, BatteryStatus, EstimatedChargeRemaining, Status を取得します。
 Set batteries = service.ExecQuery("SELECT DeviceID, BatteryStatus, EstimatedChargeRemaining, Status FROM Win32_Battery")
 If batteries.Count = 0 Then
     WScript.Echo "No battery reported by WMI."

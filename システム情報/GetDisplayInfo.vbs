@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, controllers, controller
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_VideoController を照会し、Name, CurrentHorizontalResolution, CurrentVerticalResolution を取得します。
 Set controllers = service.ExecQuery( _
     "SELECT Name, CurrentHorizontalResolution, CurrentVerticalResolution " & _
     "FROM Win32_VideoController")

@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, counters, counter
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_PerfFormattedData_PerfProc_Process を照会し、Name, IDProcess, PercentProcessorTime を取得します。
 Set counters = service.ExecQuery( _
     "SELECT Name, IDProcess, PercentProcessorTime " & _
     "FROM Win32_PerfFormattedData_PerfProc_Process WHERE IDProcess > 0")

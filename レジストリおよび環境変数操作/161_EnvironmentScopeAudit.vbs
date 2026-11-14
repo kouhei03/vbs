@@ -20,6 +20,7 @@ For Each scopeName In Array("PROCESS", "USER", "SYSTEM")
         Case "SYSTEM": scopeIndex = 2
     End Select
     Set currentScope = CreateObject("Scripting.Dictionary")
+    ' [処理解説] 辞書のキーは大文字・小文字を区別せず照合します。
     currentScope.CompareMode = vbTextCompare
     Set scopeMaps(scopeIndex) = currentScope
     totalCount = 0

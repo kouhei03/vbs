@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, systems, system, dateTime, bootTime, elapsedMinutes
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_OperatingSystem を照会し、LastBootUpTime を取得します。
 Set systems = service.ExecQuery("SELECT LastBootUpTime FROM Win32_OperatingSystem")
 Set dateTime = CreateObject("WbemScripting.SWbemDateTime")
 

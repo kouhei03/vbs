@@ -46,6 +46,7 @@ For index = 0 To UBound(checks)
     valueName = fields(2)
     dataType = fields(3)
 
+    ' [処理解説] 入力されたハイブ名をStdRegProvで使用する定数に対応付けます。
     Select Case hiveName
         Case "HKCU": hive = &H80000001
         Case "HKLM": hive = &H80000002
@@ -55,8 +56,10 @@ For index = 0 To UBound(checks)
     End Select
 
     If dataType = "KEY" Then
+        ' [処理解説] 指定キーの直下のサブキーを列挙します。再帰的な走査ではありません。
         result = registry.EnumKey(hive, subKey, data)
     ElseIf dataType = "DWORD" Then
+        ' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
         result = registry.GetDWORDValue(hive, subKey, valueName, data)
     Else
         result = registry.GetStringValue(hive, subKey, valueName, data)

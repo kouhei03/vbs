@@ -10,6 +10,7 @@ For Each item In Array("IE", "Edge")
     If item = "IE" Then
         subKey = "Software\Microsoft\Internet Explorer\Main"
         valueName = "Start Page"
+        ' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
         result = registry.GetStringValue(&H80000001, subKey, valueName, value)
     Else
         subKey = "SOFTWARE\Policies\Microsoft\Edge"

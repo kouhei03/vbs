@@ -7,12 +7,14 @@
 ' サービスSIDの型をsc.exeで照会します。
 Option Explicit
 Dim serviceName, validator
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo 118_ServiceSidTypeStatus.vbs <service-name>"
     WScript.Quit 2
 End If
 serviceName = Trim(WScript.Arguments(0))
 Set validator = New RegExp
+' [処理解説] 引数に許可する文字を限定して名前を検証します。
 validator.Pattern = "^[A-Za-z0-9_.-]+$"
 If Not validator.Test(serviceName) Then
     WScript.Echo "Use a service name containing only letters, digits, dot, underscore, or hyphen."
@@ -21,6 +23,7 @@ End If
 Dim shell, process, line, commandLine
 Set shell = CreateObject("WScript.Shell")
 commandLine = "sc.exe qsidtype " & serviceName
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec(commandLine)
 Do While Not process.StdOut.AtEndOfStream
     line = process.StdOut.ReadLine

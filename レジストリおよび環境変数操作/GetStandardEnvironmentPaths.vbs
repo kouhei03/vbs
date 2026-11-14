@@ -7,6 +7,7 @@ Option Explicit
 
 Dim shell, environment, variableName
 Set shell = CreateObject("WScript.Shell")
+' [処理解説] 環境変数は現在のプロセスのスコープを参照します。
 Set environment = shell.Environment("PROCESS")
 
 For Each variableName In Array("SystemRoot", "TEMP", "TMP")

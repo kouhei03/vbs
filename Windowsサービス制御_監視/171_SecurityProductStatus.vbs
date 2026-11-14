@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, services, item, wantedNames, wantedName, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, State, StartMode, ExitCode を取得します。
 Set services = service.ExecQuery("SELECT Name, DisplayName, State, StartMode, ExitCode FROM Win32_Service")
 wantedNames = Array("WinDefend", "MpsSvc", "wscsvc", "Sense")
 For Each wantedName In wantedNames

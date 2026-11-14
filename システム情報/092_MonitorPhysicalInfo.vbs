@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, monitors, monitor, fieldName, values, code, decoded, i
 Set service = GetObject("winmgmts:\\.\root\wmi")
+' [処理解説] WMIの WmiMonitorID を照会し、ManufacturerName, ProductCodeID, SerialNumberID, UserFriendlyName を取得します。
 Set monitors = service.ExecQuery("SELECT ManufacturerName, ProductCodeID, SerialNumberID, UserFriendlyName FROM WmiMonitorID")
 If monitors.Count = 0 Then WScript.Echo "No monitor identification data returned."
 For Each monitor In monitors

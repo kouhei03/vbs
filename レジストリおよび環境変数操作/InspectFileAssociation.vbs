@@ -6,6 +6,7 @@
 
 Option Explicit
 Dim registry, extension, progId, result, hive
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo InspectFileAssociation.vbs <.extension>"
     WScript.Quit 2
@@ -16,6 +17,7 @@ If Left(extension, 1) <> "." Or InStr(extension, "\") > 0 Then
     WScript.Quit 2
 End If
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
 result = registry.GetStringValue(&H80000000, extension, "", progId)
 If result = 0 Then WScript.Echo "HKCR default ProgID=" & progId
 result = registry.GetStringValue(&H80000001, "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\" & extension & "\UserChoice", "ProgId", progId)

@@ -6,6 +6,7 @@
 Option Explicit
 Dim registry, result, restricted
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
 result = registry.GetDWORDValue(&H80000001, "Software\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoControlPanel", restricted)
 If result = 0 Then
     WScript.Echo "NoControlPanel=" & restricted

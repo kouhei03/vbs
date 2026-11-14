@@ -6,6 +6,7 @@
 Option Explicit
 Dim shell, process, line
 Set shell = CreateObject("WScript.Shell")
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec("powershell.exe -NoProfile -NonInteractive -Command " & Chr(34) & "Get-WindowsOptionalFeature -Online -FeatureName Containers-DisposableClientVM | Select-Object FeatureName,State | Format-List" & Chr(34))
 Do While Not process.StdOut.AtEndOfStream
     line = process.StdOut.ReadLine

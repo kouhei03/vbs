@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, drives, drive, driveType
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_LogicalDisk を照会し、DeviceID, DriveType を取得します。
 Set drives = service.ExecQuery( _
     "SELECT DeviceID, DriveType FROM Win32_LogicalDisk")
 

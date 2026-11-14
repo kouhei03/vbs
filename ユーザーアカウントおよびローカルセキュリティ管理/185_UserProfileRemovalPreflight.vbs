@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, profiles, profile, cutoff, lastUse, oldCount
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_UserProfile を照会し、SID, LocalPath, Loaded, Special, LastUseTime を取得します。
 Set profiles = service.ExecQuery( _
     "SELECT SID, LocalPath, Loaded, Special, LastUseTime FROM Win32_UserProfile")
 cutoff = DateAdd("d", -90, Now)

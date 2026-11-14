@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, accounts, account
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_UserAccount を照会し、Name, PasswordExpires, PasswordRequired を取得します。
 Set accounts = service.ExecQuery( _
     "SELECT Name, PasswordExpires, PasswordRequired FROM Win32_UserAccount " & _
     "WHERE LocalAccount=True")

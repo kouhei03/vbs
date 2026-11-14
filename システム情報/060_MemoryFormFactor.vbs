@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, modules, module, formName
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_PhysicalMemory を照会し、DeviceLocator, FormFactor を取得します。
 Set modules = service.ExecQuery("SELECT DeviceLocator, FormFactor FROM Win32_PhysicalMemory")
 For Each module In modules
     Select Case module.FormFactor

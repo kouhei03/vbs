@@ -8,6 +8,7 @@ Option Explicit
 Dim shell, process, output, errorOutput, quserPath
 Set shell = CreateObject("WScript.Shell")
 quserPath = shell.ExpandEnvironmentStrings("%SystemRoot%\System32\quser.exe")
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec(Chr(34) & quserPath & Chr(34))
 output = process.StdOut.ReadAll
 errorOutput = process.StdErr.ReadAll

@@ -6,6 +6,7 @@
 
 Option Explicit
 Dim startMinute, endMinute, nowMinute, insideWindow
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 2 Then WScript.Echo "Usage: cscript //nologo 090_MaintenanceWindowCheck.vbs <start-minute-0-1439> <end-minute-0-1439>": WScript.Quit 2
 If Not IsNumeric(WScript.Arguments(0)) Or Not IsNumeric(WScript.Arguments(1)) Then WScript.Echo "Times must be minute numbers.": WScript.Quit 2
 startMinute = CLng(WScript.Arguments(0))

@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, systems, system, bootType
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_ComputerSystem を照会し、FirmwareType を取得します。
 Set systems = service.ExecQuery("SELECT FirmwareType FROM Win32_ComputerSystem")
 If systems.Count = 0 Then
     WScript.Echo "FirmwareType is unavailable."

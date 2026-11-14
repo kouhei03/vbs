@@ -6,6 +6,7 @@
 Option Explicit
 Dim registry, result, value
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
 result = registry.GetStringValue(&H80000002, "SOFTWARE\Microsoft\DirectX", "Version", value)
 If result = 0 Then
     WScript.Echo "Version=" & value

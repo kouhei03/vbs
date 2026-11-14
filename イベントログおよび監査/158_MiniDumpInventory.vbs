@@ -12,6 +12,7 @@ folderPath = fso.BuildPath(shell.ExpandEnvironmentStrings("%SystemRoot%"), "Mini
 count = 0
 totalBytes = 0
 
+' [処理解説] 標準フォルダーのDMPファイルを対象に、件数とサイズを集計します。
 If fso.FolderExists(folderPath) Then
     Set folder = fso.GetFolder(folderPath)
     For Each fileItem In folder.Files

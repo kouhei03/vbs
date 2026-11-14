@@ -7,6 +7,7 @@
 Option Explicit
 Dim service, services, item, runningCount, stoppedCount, otherCount, autoCount, manualCount, disabledCount
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、State, StartMode を取得します。
 Set services = service.ExecQuery("SELECT State, StartMode FROM Win32_Service")
 runningCount = 0
 stoppedCount = 0

@@ -7,6 +7,7 @@ Option Explicit
 Dim shell, process, startedAt, elapsed, line
 Set shell=CreateObject("WScript.Shell")
 startedAt=Timer
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process=shell.Exec("cmd.exe /c ver")
 Do While Not process.StdOut.AtEndOfStream
     line=process.StdOut.ReadLine

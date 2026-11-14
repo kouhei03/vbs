@@ -10,6 +10,7 @@ Dim service, users, profiles, shares, user, profile, share
 Dim userCount, disabledCount, lockedCount, profileCount, shareCount
 Dim fileSystem, outputPath, reportHtml, reportFile
 
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo CreateSecurityAuditSummary.vbs <new-html-path>"
     WScript.Quit 2
@@ -22,10 +23,13 @@ If fileSystem.FileExists(outputPath) Then
 End If
 
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_UserAccount を照会し、Disabled, Lockout を取得します。
 Set users = service.ExecQuery( _
     "SELECT Disabled, Lockout FROM Win32_UserAccount WHERE LocalAccount=True")
+' [処理解説] WMIの Win32_UserProfile を照会し、SID を取得します。
 Set profiles = service.ExecQuery( _
     "SELECT SID FROM Win32_UserProfile WHERE Special=False")
+' [処理解説] WMIの Win32_Share を照会し、Name を取得します。
 Set shares = service.ExecQuery("SELECT Name FROM Win32_Share")
 
 userCount = 0
@@ -58,6 +62,7 @@ reportHtml = "<!doctype html>" & vbCrLf & _
     "</body></html>"
 
 On Error Resume Next
+' [処理解説] 上書き引数をFalseにして、新しい出力ファイルのみを作成します。
 Set reportFile = fileSystem.CreateTextFile(outputPath, False, True)
 If Err.Number <> 0 Then
     WScript.Echo "Could not create report: " & Err.Description

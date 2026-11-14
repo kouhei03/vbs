@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, disks, disk
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_DiskDrive を照会し、Model, Size, MediaType を取得します。
 Set disks = service.ExecQuery( _
     "SELECT Model, Size, MediaType FROM Win32_DiskDrive")
 

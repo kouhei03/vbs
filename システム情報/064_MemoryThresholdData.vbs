@@ -25,7 +25,9 @@ If WScript.Arguments.Count = 1 Then
     End If
 End If
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_ComputerSystem を照会し、TotalPhysicalMemory を取得します。
 Set systems = service.ExecQuery("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem")
+' [処理解説] WMIの Win32_PerfFormattedData_PerfOS_Memory を照会し、AvailableBytes を取得します。
 Set memories = service.ExecQuery("SELECT AvailableBytes FROM Win32_PerfFormattedData_PerfOS_Memory")
 For Each system In systems
     totalBytes = CDbl(system.TotalPhysicalMemory)

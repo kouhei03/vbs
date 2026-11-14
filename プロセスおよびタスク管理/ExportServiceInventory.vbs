@@ -8,6 +8,7 @@ Option Explicit
 
 Dim service, services, item, fileSystem, outputPath, outputFile
 
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 1 Then
     WScript.Echo "Usage: cscript //nologo ExportServiceInventory.vbs <new-csv-path>"
     WScript.Quit 2
@@ -21,10 +22,12 @@ If fileSystem.FileExists(outputPath) Then
 End If
 
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, State, StartMode を取得します。
 Set services = service.ExecQuery( _
     "SELECT Name, DisplayName, State, StartMode FROM Win32_Service")
 
 On Error Resume Next
+' [処理解説] 上書き引数をFalseにして、新しい出力ファイルのみを作成します。
 Set outputFile = fileSystem.CreateTextFile(outputPath, False, True)
 If Err.Number <> 0 Then
     WScript.Echo "Could not create CSV file: " & Err.Description
@@ -40,6 +43,7 @@ Next
 outputFile.Close
 WScript.Echo "Service inventory written to: " & outputPath
 
+' [処理解説] CSVの値を引用符で囲み、値中の引用符を二重化します。
 Function Csv(value)
     If IsNull(value) Or IsEmpty(value) Then
         value = ""

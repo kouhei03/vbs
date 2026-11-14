@@ -9,6 +9,7 @@ Dim shell, value, registryPath
 Set shell = CreateObject("WScript.Shell")
 registryPath = "HKLM\SYSTEM\CurrentControlSet\Control\ServicesPipeTimeout"
 On Error Resume Next
+' [処理解説] レジストリの現在値を読み取ります。設定値は変更しません。
 value = shell.RegRead(registryPath)
 If Err.Number <> 0 Then
     WScript.Echo "ServicesPipeTimeout is not explicitly set or cannot be read."

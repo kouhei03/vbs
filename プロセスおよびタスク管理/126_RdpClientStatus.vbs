@@ -6,6 +6,7 @@
 Option Explicit
 Dim service, processes, process
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Process を照会し、Name,ProcessId,CreationDate を取得します。
 Set processes = service.ExecQuery("SELECT Name,ProcessId,CreationDate FROM Win32_Process WHERE Name='mstsc.exe'")
 If processes.Count = 0 Then WScript.Echo "mstsc.exe is not running."
 For Each process In processes

@@ -7,6 +7,7 @@ Option Explicit
 
 Dim service, logs, logItem, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_NTEventLogFile を照会し、Name, FileName, FileSize, MaxFileSize を取得します。
 Set logs = service.ExecQuery( _
     "SELECT Name, FileName, FileSize, MaxFileSize FROM Win32_NTEventLogFile " & _
     "WHERE Name='Security'")

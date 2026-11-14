@@ -8,6 +8,7 @@ Option Explicit
 Dim validator, i, processName
 If WScript.Arguments.Count < 1 Then WScript.Echo "Usage: cscript //nologo 092_ProcessSequencePreview.vbs <process.exe> [process.exe ...]": WScript.Quit 2
 Set validator = New RegExp
+' [処理解説] 引数に許可する文字を限定して名前を検証します。
 validator.Pattern = "^[A-Za-z0-9_.-]+$"
 For i = 0 To WScript.Arguments.Count - 1
     processName = WScript.Arguments(i)

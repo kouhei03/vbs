@@ -6,6 +6,7 @@
 Option Explicit
 Dim shell, process, line, found
 Set shell = CreateObject("WScript.Shell")
+' [処理解説] 外部プロセスを起動し、出力ストリームと終了コードを取得できるオブジェクトを受け取ります。
 Set process = shell.Exec("tasklist.exe /v /fo csv")
 found = False
 Do While Not process.StdOut.AtEndOfStream
