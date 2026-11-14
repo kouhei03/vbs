@@ -2,7 +2,7 @@
 ' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
 '   cscript //nologo 075_ProcessIoBytes.vbs <process.exe>
 '   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
-' 実行結果: 既存の未展開テンプレートにより構文エラーとなり、結果は表示されません。
+' 実行結果: 対象プロセスの名前、PID、I/O操作数と転送量を表示します。
 
 Option Explicit
 Dim service, processName, validator, records, process, fieldName, value
@@ -28,7 +28,7 @@ If records.Count = 0 Then
 End If
 For Each process In records
     WScript.Echo "Name=" & process.Name & " PID=" & process.ProcessId
-    For Each fieldName In Array({', '.join(q(p) for p in props.split(','))})
+    For Each fieldName In Array("ReadOperationCount", "WriteOperationCount", "ReadTransferCount", "WriteTransferCount")
         value = process.Properties_.Item(fieldName).Value
         If IsNull(value) Then
             WScript.Echo fieldName & "=(not reported)"
