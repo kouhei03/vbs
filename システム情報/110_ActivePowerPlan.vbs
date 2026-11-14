@@ -1,3 +1,8 @@
+' ファイル概要: 現在の電源プラン。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 110_ActivePowerPlan.vbs
+' 実行結果: 現在の電源プラン処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line
 Set shell = CreateObject("WScript.Shell")

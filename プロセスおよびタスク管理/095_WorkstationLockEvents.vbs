@@ -1,3 +1,8 @@
+' ファイル概要: 画面ロックイベント照会。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 095_WorkstationLockEvents.vbs
+' 実行結果: 画面ロックイベント照会処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, events, eventRecord, query, count
 Set service = GetObject("winmgmts:\\.\root\cimv2")

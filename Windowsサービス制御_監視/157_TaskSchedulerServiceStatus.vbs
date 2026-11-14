@@ -1,3 +1,8 @@
+' ファイル概要: タスクスケジューラサービスの状態確認のみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 157_TaskSchedulerServiceStatus.vbs
+' 実行結果: タスクスケジューラサービスの状態確認のみ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, services, item, wantedNames, wantedName, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")

@@ -1,3 +1,8 @@
+' ファイル概要: ページファイルの構成を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetPageFileInfo.vbs
+' 実行結果: ページファイルの構成を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, settings, setting, usages, usage, found

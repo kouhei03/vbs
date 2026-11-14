@@ -1,3 +1,8 @@
+' ファイル概要: UPSデバイス状態。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 114_UpsStatus.vbs
+' 実行結果: UPSデバイス状態処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

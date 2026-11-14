@@ -1,3 +1,8 @@
+' ファイル概要: スクリプトの開始・終了時刻をコンソールに記録する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 156_RunLifecycleConsoleLog.vbs
+' 実行結果: スクリプトの開始・終了時刻をコンソールに記録する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim startedAt, endedAt

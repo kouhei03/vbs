@@ -1,3 +1,8 @@
+' ファイル概要: セキュリティログのメタデータを確認する（バックアップなし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 155_SecurityLogBackupPreflight.vbs
+' 実行結果: セキュリティログのメタデータを確認する（バックアップなし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, logs, logItem, found

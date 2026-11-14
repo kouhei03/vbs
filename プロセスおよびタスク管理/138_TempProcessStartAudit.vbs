@@ -1,3 +1,8 @@
+' ファイル概要: TEMP配下プロセス起動情報照会。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 138_TempProcessStartAudit.vbs
+' 実行結果: TEMP配下プロセス起動情報照会処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, processes, process, shell, tempPath, pathValue, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")

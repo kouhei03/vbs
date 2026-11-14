@@ -1,3 +1,8 @@
+' ファイル概要: UEFI/レガシーブート方式。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 041_FirmwareBootType.vbs
+' 実行結果: UEFI/レガシーブート方式処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, systems, system, bootType
 Set service = GetObject("winmgmts:\\.\root\cimv2")

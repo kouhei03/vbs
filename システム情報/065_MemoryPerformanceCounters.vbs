@@ -1,3 +1,8 @@
+' ファイル概要: ページング等の性能カウンター（帯域幅そのものではありません）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 065_MemoryPerformanceCounters.vbs
+' 実行結果: ページング等の性能カウンター（帯域幅そのものではありません）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

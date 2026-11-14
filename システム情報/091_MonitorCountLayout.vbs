@@ -1,3 +1,8 @@
+' ファイル概要: モニター認識数と情報（配置座標はWMI非対応）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 091_MonitorCountLayout.vbs
+' 実行結果: モニター認識数と情報（配置座標はWMI非対応）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, monitors, monitor, monitorCount
 Set service = GetObject("winmgmts:\\.\root\cimv2")

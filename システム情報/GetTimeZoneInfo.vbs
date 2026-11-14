@@ -1,3 +1,8 @@
+' ファイル概要: タイムゾーンとUTCオフセットを取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetTimeZoneInfo.vbs
+' 実行結果: タイムゾーンとUTCオフセットを取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, zones, zone, services, timeService

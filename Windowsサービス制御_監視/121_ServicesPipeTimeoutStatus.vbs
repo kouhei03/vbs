@@ -1,3 +1,8 @@
+' ファイル概要: ServicesPipeTimeout値の読み取り。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 121_ServicesPipeTimeoutStatus.vbs
+' 実行結果: ServicesPipeTimeout値の読み取り処理の結果やエラーをコンソールに表示します。
+
 ' ServicesPipeTimeoutの現在値を読み取ります。レジストリ変更はしません。
 Option Explicit
 Dim shell, value, registryPath

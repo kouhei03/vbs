@@ -1,3 +1,8 @@
+' ファイル概要: プロセスと親プロセスのIDを取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetProcessParentIds.vbs
+' 実行結果: プロセスと親プロセスのIDを取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, processes, process

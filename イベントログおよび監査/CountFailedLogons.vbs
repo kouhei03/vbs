@@ -1,3 +1,9 @@
+' ファイル概要: 指定期間のログオン失敗イベントを集計する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo CountFailedLogons.vbs <hours 1-168>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定期間のログオン失敗イベントを集計する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim hours, timeFilter, service, events, eventItem, count

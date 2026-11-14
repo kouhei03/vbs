@@ -1,3 +1,8 @@
+' ファイル概要: Windows Installerのエラーイベントを表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 159_MsiErrorSummary.vbs
+' 実行結果: Windows Installerのエラーイベントを表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim filter, service, events, eventItem, count

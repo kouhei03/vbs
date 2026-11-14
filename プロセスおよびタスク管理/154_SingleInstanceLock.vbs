@@ -1,3 +1,8 @@
+' ファイル概要: ロックファイルの単一起動デモ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 154_SingleInstanceLock.vbs
+' 実行結果: ロックファイルの単一起動デモ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim fso, shell, lockPath, lockFile, errorNumber
 Set fso=CreateObject("Scripting.FileSystemObject")

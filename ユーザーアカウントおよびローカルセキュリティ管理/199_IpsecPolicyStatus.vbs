@@ -1,3 +1,8 @@
+' ファイル概要: 接続セキュリティルールを照会する（IPsecポリシー変更なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 199_IpsecPolicyStatus.vbs
+' 実行結果: 接続セキュリティルールを照会する（IPsecポリシー変更なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim shell, process, line, ruleCount, netshPath

@@ -1,3 +1,8 @@
+' ファイル概要: 物理メモリ総容量。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 056_PhysicalMemoryTotal.vbs
+' 実行結果: 物理メモリ総容量処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

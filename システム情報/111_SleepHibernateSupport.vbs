@@ -1,3 +1,8 @@
+' ファイル概要: スリープ/休止状態対応。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 111_SleepHibernateSupport.vbs
+' 実行結果: スリープ/休止状態対応処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line
 Set shell = CreateObject("WScript.Shell")

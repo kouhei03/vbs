@@ -1,3 +1,9 @@
+' ファイル概要: 指定フォルダー内の古いファイルの件数と容量を集計する（削除なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 166_LogRotationPreflight.vbs <folder> <age-days 1-3650>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定フォルダー内の古いファイルの件数と容量を集計する（削除なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim folderPath, ageDays, fso, folder, fileItem, cutoff, oldCount, oldBytes

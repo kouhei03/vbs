@@ -1,3 +1,9 @@
+' ファイル概要: イベントのソース名・ID・メッセージ長を検証する（書き込みなし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 144_CustomEventWritePreview.vbs <source-name> <event-id> <message>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: イベントのソース名・ID・メッセージ長を検証する（書き込みなし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim sourceName, eventId, messageText

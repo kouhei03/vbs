@@ -1,3 +1,8 @@
+' ファイル概要: ディスプレイ解像度。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 089_DisplayResolution.vbs
+' 実行結果: ディスプレイ解像度処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

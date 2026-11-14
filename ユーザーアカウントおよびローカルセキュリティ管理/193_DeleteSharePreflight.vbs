@@ -1,3 +1,9 @@
+' ファイル概要: 共有名と対応するパスを確認する（削除なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 193_DeleteSharePreflight.vbs <share-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 共有名と対応するパスを確認する（削除なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim shareName, service, shares, share, found

@@ -1,3 +1,8 @@
+' ファイル概要: サービスに依存するサービスを列挙する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetServiceDependents.vbs
+' 実行結果: サービスに依存するサービスを列挙する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, relations, relation

@@ -1,3 +1,8 @@
+' ファイル概要: 過去24時間のシステムとアプリケーションのエラーを集計する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 149_ErrorCount24Hours.vbs
+' 実行結果: 過去24時間のシステムとアプリケーションのエラーを集計する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, events, eventItem, filter, count

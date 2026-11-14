@@ -1,3 +1,9 @@
+' ファイル概要: イベントログの容量と保持設定を確認する（消去なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 146_EventLogClearPreflight.vbs <System|Application|Security>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: イベントログの容量と保持設定を確認する（消去なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim logName, service, logs, logItem, found

@@ -1,3 +1,8 @@
+' ファイル概要: ネットワークアダプターの状態変化に関するイベントを表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetNetworkChangeEvents.vbs
+' 実行結果: ネットワークアダプターの状態変化に関するイベントを表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim timeFilter, service, events, eventItem

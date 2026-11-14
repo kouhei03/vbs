@@ -1,3 +1,8 @@
+' ファイル概要: GPU状態診断（有効/無効を断定できません）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 093_HardwareAccelerationInfo.vbs
+' 実行結果: GPU状態診断（有効/無効を断定できません）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, adapters, adapter
 Set service = GetObject("winmgmts:\\.\root\cimv2")

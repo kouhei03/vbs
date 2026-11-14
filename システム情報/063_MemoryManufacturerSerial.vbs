@@ -1,3 +1,8 @@
+' ファイル概要: メモリメーカーとシリアル番号。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 063_MemoryManufacturerSerial.vbs
+' 実行結果: メモリメーカーとシリアル番号処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

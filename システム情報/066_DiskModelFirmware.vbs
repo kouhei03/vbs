@@ -1,3 +1,8 @@
+' ファイル概要: ディスク型番とファームウェア。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 066_DiskModelFirmware.vbs
+' 実行結果: Model、FirmwareRevision、SerialNumberをディスクごとに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

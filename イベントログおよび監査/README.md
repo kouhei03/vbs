@@ -1,3 +1,7 @@
+> **ファイル概要:** イベントログと監査のスクリプトの一覧と利用条件。
+> **実行方法:** この文書を参照し、Windowsのコマンドプロンプトでこのフォルダーから `cscript //nologo GetRecentEvents.vbs System 24` を実行。
+> **実行結果:** 例では指定したイベントログの時刻、ID、ソースなどがコンソールに表示されます。
+
 # Windows event log diagnostics
 
 The scripts in this directory perform local, read-only event-log queries.

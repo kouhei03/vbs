@@ -1,3 +1,8 @@
+' ファイル概要: 標準ハイブファイルのメタデータを確認する（ロード・修復なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectRegistryHiveFiles.vbs
+' 実行結果: 標準ハイブファイルのメタデータを確認する（ロード・修復なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim fso, shell, root, hiveName, filePath, file
 Set fso = CreateObject("Scripting.FileSystemObject")

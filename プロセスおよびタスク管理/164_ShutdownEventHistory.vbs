@@ -1,3 +1,8 @@
+' ファイル概要: シャットダウン履歴照会のみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 164_ShutdownEventHistory.vbs
+' 実行結果: シャットダウン履歴照会のみ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, events, eventRecord, count
 Set service=GetObject("winmgmts:\\.\root\cimv2")

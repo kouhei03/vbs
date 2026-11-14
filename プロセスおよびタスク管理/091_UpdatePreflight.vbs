@@ -1,3 +1,9 @@
+' ファイル概要: 更新前の関連プロセス確認。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 091_UpdatePreflight.vbs <process.exe> [process.exe ...]
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 更新前の関連プロセス確認処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, processName, validator, records, i
 If WScript.Arguments.Count < 1 Then WScript.Echo "Usage: cscript //nologo 091_UpdatePreflight.vbs <process.exe> [process.exe ...]": WScript.Quit 2

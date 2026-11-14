@@ -1,3 +1,8 @@
+' ファイル概要: IEとEdgeのホームページ設定を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectBrowserHomePages.vbs
+' 実行結果: IEとEdgeのホームページ設定を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, value, item, subKey, valueName
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

@@ -1,3 +1,8 @@
+' ファイル概要: OSインストール日時。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 118_WindowsInstallDates.vbs
+' 実行結果: OSインストール日時処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, systems, system, registry, result, installDate
 Set service = GetObject("winmgmts:\\.\root\cimv2")

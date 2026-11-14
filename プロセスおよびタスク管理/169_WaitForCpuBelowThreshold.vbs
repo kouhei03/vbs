@@ -1,3 +1,9 @@
+' ファイル概要: CPU負荷が下がるまでの期限付き待機。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 169_WaitForCpuBelowThreshold.vbs <threshold-0-100> <timeout-1-300>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: CPU負荷が下がるまでの期限付き待機処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, counters, counter, threshold, timeoutSeconds, elapsed, cpu, found
 If WScript.Arguments.Count<>2 Then WScript.Echo "Usage: cscript //nologo 169_WaitForCpuBelowThreshold.vbs <threshold-0-100> <timeout-1-300>": WScript.Quit 2

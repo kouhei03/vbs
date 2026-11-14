@@ -1,3 +1,9 @@
+' ファイル概要: IFEOのDebugger値の有無を確認する（値は非表示）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectIFEOBlockSettings.vbs <image-name.exe>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: IFEOのDebugger値の有無を確認する（値は非表示）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, imageName, subKey, result, names, types, i
 If WScript.Arguments.Count <> 1 Then

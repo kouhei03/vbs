@@ -1,3 +1,8 @@
+' ファイル概要: 筐体シリアル番号と資産タグ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 043_ChassisIdentifiers.vbs
+' 実行結果: 筐体シリアル番号と資産タグ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

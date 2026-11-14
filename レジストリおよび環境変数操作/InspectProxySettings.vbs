@@ -1,3 +1,8 @@
+' ファイル概要: 資格情報を含む可能性のある値を伏せてプロキシ設定を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectProxySettings.vbs
+' 実行結果: 資格情報を含む可能性のある値を伏せてプロキシ設定を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, enabled, server, autoConfig, displayValue
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

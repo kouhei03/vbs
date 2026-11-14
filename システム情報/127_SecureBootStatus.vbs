@@ -1,3 +1,8 @@
+' ファイル概要: Secure Boot状態。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 127_SecureBootStatus.vbs
+' 実行結果: Secure Boot状態処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, value
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

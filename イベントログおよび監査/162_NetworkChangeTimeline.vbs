@@ -1,3 +1,8 @@
+' ファイル概要: ネットワーク関連のイベントメタデータを表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 162_NetworkChangeTimeline.vbs
+' 実行結果: ネットワーク関連のイベントメタデータを表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim filter, service, events, eventItem

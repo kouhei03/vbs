@@ -1,3 +1,8 @@
+' ファイル概要: イベントログの容量と上書き設定を表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetEventLogSettings.vbs
+' 実行結果: イベントログの容量と上書き設定を表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, logs, logItem

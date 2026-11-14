@@ -1,3 +1,8 @@
+' ファイル概要: BitLockerドライブ保護状態。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 075_BitLockerVolumeStatus.vbs
+' 実行結果: BitLockerドライブ保護状態処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line, commandLine
 Set shell = CreateObject("WScript.Shell")

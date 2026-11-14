@@ -1,3 +1,8 @@
+' ファイル概要: スマートカードリーダー状態照会。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 143_SmartCardReaderStatus.vbs
+' 実行結果: スマートカードリーダー状態照会処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, devices, device
 Set service = GetObject("winmgmts:\\.\root\cimv2")

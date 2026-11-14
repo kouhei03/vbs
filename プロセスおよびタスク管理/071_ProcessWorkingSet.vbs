@@ -1,3 +1,9 @@
+' ファイル概要: 指定プロセスのWorking Set。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 071_ProcessWorkingSet.vbs <process.exe>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 既存の未展開テンプレートにより構文エラーとなり、結果は表示されません。
+
 Option Explicit
 Dim service, processName, validator, records, process, fieldName, value
 If WScript.Arguments.Count <> 1 Then

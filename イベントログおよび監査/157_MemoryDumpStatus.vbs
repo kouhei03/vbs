@@ -1,3 +1,8 @@
+' ファイル概要: 標準のMEMORY.DMPのメタデータを確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 157_MemoryDumpStatus.vbs
+' 実行結果: 標準のMEMORY.DMPのメタデータを確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim shell, fso, systemRoot, dumpPath, dumpFile

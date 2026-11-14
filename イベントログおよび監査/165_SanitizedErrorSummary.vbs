@@ -1,3 +1,9 @@
+' ファイル概要: 指定されたエラー情報の一部の機密値をマスクして表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 165_SanitizedErrorSummary.vbs <number> <source> <description>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定されたエラー情報の一部の機密値をマスクして表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim errorNumber, errorSource, errorDescription, integerPattern

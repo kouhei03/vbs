@@ -1,3 +1,8 @@
+' ファイル概要: 生体認証デバイス。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 105_BiometricDevices.vbs
+' 実行結果: 生体認証デバイス処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

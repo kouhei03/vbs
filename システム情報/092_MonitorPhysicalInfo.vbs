@@ -1,3 +1,8 @@
+' ファイル概要: モニター物理情報。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 092_MonitorPhysicalInfo.vbs
+' 実行結果: モニター物理情報処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, monitors, monitor, fieldName, values, code, decoded, i
 Set service = GetObject("winmgmts:\\.\root\wmi")

@@ -1,3 +1,8 @@
+' ファイル概要: 固定/リムーバブル/ネットワークドライブ判定。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 072_DriveTypeClassification.vbs
+' 実行結果: 固定/リムーバブル/ネットワークドライブ判定処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, drives, drive, driveTypeName
 Set service = GetObject("winmgmts:\\.\root\cimv2")

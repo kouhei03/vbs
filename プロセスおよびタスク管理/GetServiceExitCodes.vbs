@@ -1,3 +1,8 @@
+' ファイル概要: サービスの終了コードを取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetServiceExitCodes.vbs
+' 実行結果: サービスの終了コードを取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, services, item

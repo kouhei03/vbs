@@ -1,3 +1,8 @@
+' ファイル概要: ファイアウォールプロファイル状態。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 131_FirewallProfiles.vbs
+' 実行結果: ファイアウォールプロファイル状態処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line, commandLine
 Set shell = CreateObject("WScript.Shell")

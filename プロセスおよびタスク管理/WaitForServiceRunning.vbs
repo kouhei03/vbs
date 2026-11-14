@@ -1,3 +1,9 @@
+' ファイル概要: 指定サービスが実行中になるまで待機する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo WaitForServiceRunning.vbs <service-name> <timeout-seconds>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定サービスが実行中になるまで待機する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, services, item, serviceName, timeoutText, timeoutSeconds

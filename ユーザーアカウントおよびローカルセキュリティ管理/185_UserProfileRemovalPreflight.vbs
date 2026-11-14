@@ -1,3 +1,8 @@
+' ファイル概要: 90日以上未使用の非特殊・未ロードプロファイルを確認する（削除なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 185_UserProfileRemovalPreflight.vbs
+' 実行結果: 90日以上未使用の非特殊・未ロードプロファイルを確認する（削除なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, profiles, profile, cutoff, lastUse, oldCount

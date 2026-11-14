@@ -1,3 +1,8 @@
+' ファイル概要: SQL ServerとIISのサービス状態を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo CheckMiddlewareServices.vbs
+' 実行結果: SQL ServerとIISのサービス状態を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, services, item, nameUpper, found

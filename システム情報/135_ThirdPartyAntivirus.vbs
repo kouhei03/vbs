@@ -1,3 +1,8 @@
+' ファイル概要: サードパーティ製ウイルス対策状態。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 135_ThirdPartyAntivirus.vbs
+' 実行結果: サードパーティ製ウイルス対策状態処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\SecurityCenter2")

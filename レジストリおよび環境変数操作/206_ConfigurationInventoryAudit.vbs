@@ -1,3 +1,8 @@
+' ファイル概要: アプリケーションや周辺機器のレジストリキーの数を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 206_ConfigurationInventoryAudit.vbs
+' 実行結果: アプリケーションや周辺機器のレジストリキーの数を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim registry, targets, fields, hiveName, hive, subKey

@@ -1,3 +1,7 @@
+> **ファイル概要:** Windowsサービスの照会・監視スクリプトの一覧と制限事項。
+> **実行方法:** この文書を参照し、Windowsのコマンドプロンプトでこのフォルダーから `cscript //nologo GetAllServices.vbs` を実行。
+> **実行結果:** 例ではサービス名、表示名、状態がコンソールに表示されます。
+
 # Windows service inspection and monitoring
 
 Run each script locally with Windows Script Host. These scripts query service

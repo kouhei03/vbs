@@ -1,3 +1,9 @@
+' ファイル概要: 期限付きサービス状態ポーリング。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 186_BoundedServicePoll.vbs <service-name> <duration-1-300> <interval-1-30>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 期限付きサービス状態ポーリング処理の結果やエラーをコンソールに表示します。
+
 ' サービス状態を最大300秒、指定間隔で読み取ります。復旧操作は行いません。
 Option Explicit
 Dim serviceName, duration, intervalSeconds, validator, service, services, item, startTime, found

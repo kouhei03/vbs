@@ -1,3 +1,8 @@
+' ファイル概要: GPU型番とメーカー。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 086_GpuModelManufacturer.vbs
+' 実行結果: GPU型番とメーカー処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

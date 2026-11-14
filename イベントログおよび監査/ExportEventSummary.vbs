@@ -1,3 +1,9 @@
+' ファイル概要: イベントのメタデータをCSVに出力する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo ExportEventSummary.vbs <System|Application|Security> <hours 1-168> <new-csv-path>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: イベントの時刻・ID・ソース・レコード番号を新規CSVに保存し、処理結果を表示します。
+
 Option Explicit
 
 Dim logName, hours, outputPath, timeFilter, service, events, eventItem

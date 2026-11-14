@@ -1,3 +1,8 @@
+' ファイル概要: 割り当て済みネットワークドライブを一覧表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo ListMappedDrives.vbs
+' 実行結果: 割り当て済みネットワークドライブを一覧表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim network, mappings, index

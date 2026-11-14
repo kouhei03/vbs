@@ -1,3 +1,8 @@
+' ファイル概要: BitLocker保護状態。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 128_BitLockerProtection.vbs
+' 実行結果: BitLocker保護状態処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line, commandLine
 Set shell = CreateObject("WScript.Shell")

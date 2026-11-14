@@ -1,3 +1,8 @@
+' ファイル概要: プロダクトキーを取得せずライセンス状態を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo AuditLicenseState.vbs
+' 実行結果: プロダクトキーを取得せずライセンス状態を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, products, product, licensedCount, statusName
 Set service = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")

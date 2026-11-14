@@ -1,3 +1,8 @@
+' ファイル概要: 現在のプロセスPATHの重複を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectPathDuplicates.vbs
+' 実行結果: 現在のプロセスPATHの重複を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, pathValue, entries, seen, entry, normalized, foundDuplicate
 Set shell = CreateObject("WScript.Shell")

@@ -1,3 +1,8 @@
+' ファイル概要: ローカルの監査ポリシーを照会する（変更なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 183_LocalSecurityPolicyStatus.vbs
+' 実行結果: ローカルの監査ポリシーを照会する（変更なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim shell, process, output, errorOutput, auditPolPath

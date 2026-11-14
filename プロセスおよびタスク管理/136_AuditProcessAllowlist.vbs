@@ -1,3 +1,9 @@
+' ファイル概要: プロセス許可リスト照合のみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 136_AuditProcessAllowlist.vbs <allowlist-file>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: プロセス許可リスト照合のみ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim fso, allowFile, allowed, line, service, processes, process, found
 If WScript.Arguments.Count <> 1 Then WScript.Echo "Usage: cscript //nologo 136_AuditProcessAllowlist.vbs <allowlist-file>": WScript.Quit 2

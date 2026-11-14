@@ -1,3 +1,8 @@
+' ファイル概要: ミニダンプのメタデータを列挙する（移動・コピーなし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 158_MiniDumpInventory.vbs
+' 実行結果: ミニダンプのメタデータを列挙する（移動・コピーなし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim fso, shell, folderPath, folder, fileItem, count, totalBytes

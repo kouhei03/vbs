@@ -1,3 +1,9 @@
+' ファイル概要: 指定プロセスの製品/ファイルバージョン。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 080_ProcessFileVersion.vbs <process.exe>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定プロセスの製品/ファイルバージョン処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, processName, validator, records, process, fieldName, value, fso
 If WScript.Arguments.Count <> 1 Then

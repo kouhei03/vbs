@@ -1,3 +1,8 @@
+' ファイル概要: メモリフォームファクター。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 060_MemoryFormFactor.vbs
+' 実行結果: メモリフォームファクター処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, modules, module, formName
 Set service = GetObject("winmgmts:\\.\root\cimv2")

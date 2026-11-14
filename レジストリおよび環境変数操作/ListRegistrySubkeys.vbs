@@ -1,3 +1,9 @@
+' ファイル概要: 指定レジストリキーの直下のサブキーを列挙する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo ListRegistrySubkeys.vbs <HKCU|HKLM|HKCR|HKU|HKCC> <subkey>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定レジストリキーの直下のサブキーを列挙する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim registry, hiveName, hive, subKey, result, children, child

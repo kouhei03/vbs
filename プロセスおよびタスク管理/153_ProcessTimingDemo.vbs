@@ -1,3 +1,8 @@
+' ファイル概要: 固定コマンドの実行時間計測。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 153_ProcessTimingDemo.vbs
+' 実行結果: 固定コマンドの実行時間計測処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, startedAt, elapsed, line
 Set shell=CreateObject("WScript.Shell")

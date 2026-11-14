@@ -1,3 +1,8 @@
+' ファイル概要: ユーザープロファイルのSIDとハイブの状態を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectUserProfileHives.vbs
+' 実行結果: ユーザープロファイルのSIDとハイブの状態を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, profiles, profile, fso, hivePath, hiveExists
 Set service = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")

@@ -1,3 +1,9 @@
+' ファイル概要: ウィンドウタイトルによるアクティブ化。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 106_ActivateWindowTitle.vbs <window-title>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: ウィンドウタイトルによるアクティブ化処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, title, activated
 If WScript.Arguments.Count <> 1 Then WScript.Echo "Usage: cscript //nologo 106_ActivateWindowTitle.vbs <window-title>": WScript.Quit 2

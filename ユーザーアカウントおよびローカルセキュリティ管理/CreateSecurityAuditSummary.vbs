@@ -1,3 +1,9 @@
+' ファイル概要: ローカルセキュリティの集計をHTMLに出力する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo CreateSecurityAuditSummary.vbs <new-html-path>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: ローカルアカウント・プロファイル・共有の集計を新規HTMLファイルに保存し、処理結果を表示します。
+
 Option Explicit
 
 Dim service, users, profiles, shares, user, profile, share

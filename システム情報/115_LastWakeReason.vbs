@@ -1,3 +1,8 @@
+' ファイル概要: 直近の電源復帰理由。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 115_LastWakeReason.vbs
+' 実行結果: 直近の電源復帰理由処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line
 Set shell = CreateObject("WScript.Shell")

@@ -1,3 +1,8 @@
+' ファイル概要: マザーボードの製造元と製品名を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetMotherboardInfo.vbs
+' 実行結果: マザーボードの製造元と製品名を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, boards, board

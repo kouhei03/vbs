@@ -1,3 +1,9 @@
+' ファイル概要: 新規HTML監査レポート。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 185_ServiceAuditHtml.vbs <new-html-path>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: サービス状態のHTMLファイルを新規作成し、処理結果を表示します。
+
 ' 全サービス状態をローカルHTMLへ出力します。新規ファイルのみ作成し、既存ファイルは上書きしません。
 Option Explicit
 Dim fso, path, file, service, services, item

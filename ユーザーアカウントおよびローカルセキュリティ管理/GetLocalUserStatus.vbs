@@ -1,3 +1,9 @@
+' ファイル概要: 指定したローカルユーザーの状態を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetLocalUserStatus.vbs <user-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定したローカルユーザーの状態を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, users, user, userName, found

@@ -1,3 +1,8 @@
+' ファイル概要: TEMP配下の実行中プロセス監査。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 135_TempProcessAudit.vbs
+' 実行結果: TEMP配下の実行中プロセス監査処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, processes, process, shell, tempPath, pathValue, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")

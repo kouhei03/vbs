@@ -1,3 +1,8 @@
+' ファイル概要: パーティション総量/使用量/空き容量。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 070_PartitionUsage.vbs
+' 実行結果: パーティション総量/使用量/空き容量処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, drives, drive, usedBytes, usedPercent
 Set service = GetObject("winmgmts:\\.\root\cimv2")

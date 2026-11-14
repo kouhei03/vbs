@@ -1,3 +1,8 @@
+' ファイル概要: 既定言語とロケール。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 120_WindowsLocale.vbs
+' 実行結果: 既定言語とロケール処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

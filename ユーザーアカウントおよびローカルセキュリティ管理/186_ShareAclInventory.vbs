@@ -1,3 +1,8 @@
+' ファイル概要: 共有フォルダーのDACLとアクセスマスクを取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 186_ShareAclInventory.vbs
+' 実行結果: 共有フォルダーのDACLとアクセスマスクを取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, settings, setting, descriptor, result, entry, trustee

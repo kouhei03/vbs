@@ -1,3 +1,9 @@
+' ファイル概要: 依存しているサービスの列挙。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 106_DependentServices.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 依存しているサービスの列挙処理の結果やエラーをコンソールに表示します。
+
 ' 一つのサービスに依存しているサービスをローカルWMIから列挙します。変更操作はしません。
 Option Explicit
 Dim serviceName, validator, service, relations, relation, marker, found

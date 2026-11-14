@@ -1,3 +1,9 @@
+' ファイル概要: ドロップファイルのメタデータ取得。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 158_DroppedFileMetadata.vbs <ファイルパス> [ファイルパス ...]
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: ドロップファイルのメタデータ取得処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim fso, i, path, file
 Set fso=CreateObject("Scripting.FileSystemObject")

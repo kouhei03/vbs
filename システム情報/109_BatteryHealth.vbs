@@ -1,3 +1,8 @@
+' ファイル概要: バッテリー劣化度算出。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 109_BatteryHealth.vbs
+' 実行結果: バッテリー劣化度算出処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, designRows, fullRows, row, designCapacity, fullCapacity, foundDesign, foundFull
 Set service = GetObject("winmgmts:\\.\root\wmi")

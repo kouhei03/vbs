@@ -1,3 +1,8 @@
+' ファイル概要: レジストリと現在のプロセスのPATHの長さを比較する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo CompareEnvironmentRefreshState.vbs
+' 実行結果: レジストリと現在のプロセスのPATHの長さを比較する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, registry, processPath, systemPath, userPath, result
 Set shell = CreateObject("WScript.Shell")

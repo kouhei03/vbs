@@ -1,3 +1,8 @@
+' ファイル概要: DIMMごとの容量。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 059_MemorySlotCapacity.vbs
+' 実行結果: DIMMごとの容量処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

@@ -1,3 +1,8 @@
+' ファイル概要: 処理待ち状態のサービスを取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetServicePendingStates.vbs
+' 実行結果: 処理待ち状態のサービスを取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, services, item, found

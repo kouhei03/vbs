@@ -1,3 +1,7 @@
+> **ファイル概要:** レジストリと環境変数の読み取り専用スクリプトの一覧。
+> **実行方法:** この文書を参照し、Windowsのコマンドプロンプトでこのフォルダーから `cscript //nologo GetStandardEnvironmentPaths.vbs` を実行。
+> **実行結果:** 例では標準の環境変数パスがコンソールに表示されます。
+
 # Registry and environment inspection scripts
 
 The scripts in this directory are read-only. They can read a string or DWORD

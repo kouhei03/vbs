@@ -1,3 +1,8 @@
+' ファイル概要: WMI照会エラー処理の例。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 196_ServiceQueryErrorHandling.vbs
+' 実行結果: WMI照会エラー処理の例処理の結果やエラーをコンソールに表示します。
+
 ' WMI照会の失敗を明示的に報告する読み取り専用エラーハンドリング例です。
 Option Explicit
 Dim service, services, errorNumber, errorDescription

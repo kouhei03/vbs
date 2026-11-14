@@ -1,3 +1,7 @@
+> **ファイル概要:** プロセスとサービスの診断スクリプトの一覧と制限事項。
+> **実行方法:** この文書を参照し、Windowsのコマンドプロンプトでこのフォルダーから `cscript //nologo GetRunningProcesses.vbs` を実行。
+> **実行結果:** 例では実行中のプロセス名とIDがコンソールに表示されます。
+
 # Process information scripts
 
 These scripts provide read-only information about processes on the local

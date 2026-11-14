@@ -1,3 +1,9 @@
+' ファイル概要: 終了コードと一般的な説明の表示。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 193_ServiceExitCodeGuide.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 終了コードと一般的な説明の表示処理の結果やエラーをコンソールに表示します。
+
 ' サービスの終了コードを取得し、よくあるWin32コードの説明を表示します。
 Option Explicit
 Dim serviceName, validator, service, services, item, found, codeValue, description

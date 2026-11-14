@@ -1,3 +1,9 @@
+' ファイル概要: 許可リストとサービス名の読み取り専用比較。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 169_ServiceAllowlistAudit.vbs <allowlist-file>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 許可リストとサービス名の読み取り専用比較処理の結果やエラーをコンソールに表示します。
+
 ' 外部許可リストとローカルサービス名を比較し、不一致を表示します。削除や無効化はしません。
 Option Explicit
 Dim fso, inputFile, allowed, service, services, item, path, lineText, found, allowedName

@@ -1,3 +1,8 @@
+' ファイル概要: VBS/HVCI稼働状態。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 133_VbsHvciStatus.vbs
+' 実行結果: VBS/HVCI稼働状態処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\Microsoft\Windows\DeviceGuard")

@@ -1,3 +1,8 @@
+' ファイル概要: Defenderリアルタイム保護と定義バージョン。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 130_DefenderStatus.vbs
+' 実行結果: Defenderリアルタイム保護と定義バージョン処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line, commandLine
 Set shell = CreateObject("WScript.Shell")

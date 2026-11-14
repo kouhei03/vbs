@@ -1,3 +1,8 @@
+' ファイル概要: 直近7日間のWindows Installerエラーを表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo FindMsiInstallerErrors.vbs
+' 実行結果: 直近7日間のWindows Installerエラーを表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim timeFilter, service, events, eventItem

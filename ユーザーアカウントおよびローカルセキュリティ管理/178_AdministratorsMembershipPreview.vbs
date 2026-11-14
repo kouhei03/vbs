@@ -1,3 +1,8 @@
+' ファイル概要: ローカルAdministratorsグループのメンバーを表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 178_AdministratorsMembershipPreview.vbs
+' 実行結果: ローカルAdministratorsグループのメンバーを表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, groups, group, members, member, domainName, memberName

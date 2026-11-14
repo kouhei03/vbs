@@ -1,3 +1,8 @@
+' ファイル概要: 過去24時間のApplicationイベント1000と1001を表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 143_ApplicationErrorDetector.vbs
+' 実行結果: 過去24時間のApplicationイベント1000と1001を表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, events, eventItem, filter, count

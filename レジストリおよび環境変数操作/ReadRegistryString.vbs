@@ -1,3 +1,9 @@
+' ファイル概要: 指定レジストリの文字列値を読み取る。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo ReadRegistryString.vbs <HKCU|HKLM|HKCR|HKU|HKCC> <subkey> <value-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定レジストリの文字列値を読み取る処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim registry, hiveName, hive, subKey, valueName, value, result

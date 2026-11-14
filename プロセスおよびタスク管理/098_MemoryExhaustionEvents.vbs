@@ -1,3 +1,8 @@
+' ファイル概要: メモリ不足イベントの取得（ダンプなし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 098_MemoryExhaustionEvents.vbs
+' 実行結果: メモリ不足イベントの取得（ダンプなし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, events, eventRecord, count
 Set service = GetObject("winmgmts:\\.\root\cimv2")

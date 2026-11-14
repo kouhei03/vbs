@@ -1,3 +1,9 @@
+' ファイル概要: ファイアウォールルールのプロトコルとポートを検証する（追加なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 196_FirewallRuleAddPreview.vbs <name> <TCP|UDP> <port 1-65535>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: ファイアウォールルールのプロトコルとポートを検証する（追加なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim ruleName, protocol, port

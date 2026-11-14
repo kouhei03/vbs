@@ -1,3 +1,9 @@
+' ファイル概要: 回復再起動遅延設定の読み取り。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 114_ServiceFailureRestartDelay.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 回復再起動遅延設定の読み取り処理の結果やエラーをコンソールに表示します。
+
 ' サービス失敗後の再起動遅延設定を照会します。再起動はしません。
 Option Explicit
 Dim serviceName, validator

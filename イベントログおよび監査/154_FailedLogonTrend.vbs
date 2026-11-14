@@ -1,3 +1,9 @@
+' ファイル概要: ログオン失敗の件数を集計する（アカウント名とアドレスは非表示）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 154_FailedLogonTrend.vbs <hours 1-168>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: ログオン失敗の件数を集計する（アカウント名とアドレスは非表示）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim hours, filter, service, events, eventItem, count

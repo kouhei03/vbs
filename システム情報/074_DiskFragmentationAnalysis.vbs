@@ -1,3 +1,8 @@
+' ファイル概要: ディスク断片化分析。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 074_DiskFragmentationAnalysis.vbs
+' 実行結果: ディスク断片化分析処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim fso, shell, drives, drive, process, line, found
 Set fso = CreateObject("Scripting.FileSystemObject")

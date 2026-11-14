@@ -1,3 +1,8 @@
+' ファイル概要: プロセスごとのI/O統計を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetProcessIOStats.vbs
+' 実行結果: プロセスごとのI/O統計を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, processes, process

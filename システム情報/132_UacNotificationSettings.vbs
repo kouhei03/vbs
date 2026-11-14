@@ -1,3 +1,8 @@
+' ファイル概要: UAC通知設定。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 132_UacNotificationSettings.vbs
+' 実行結果: UAC通知設定処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, value, settingName
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

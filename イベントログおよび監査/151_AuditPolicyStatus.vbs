@@ -1,3 +1,8 @@
+' ファイル概要: auditpolでローカルの監査ポリシーを照会する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 151_AuditPolicyStatus.vbs
+' 実行結果: auditpolでローカルの監査ポリシーを照会する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim shell, process, line, auditPolPath

@@ -1,3 +1,9 @@
+' ファイル概要: アクセス権を削除する対象を確認する（変更なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 188_AclRemovalPreview.vbs <file-or-folder> <principal>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: アクセス権を削除する対象を確認する（変更なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim targetPath, principal, fso

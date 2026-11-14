@@ -1,3 +1,9 @@
+' ファイル概要: レジストリ文字列の書き込み対象と文字数を確認する（書き込みなし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo PreviewRegistryStringWrite.vbs <hive> <subkey> <value-name> <value>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: レジストリ文字列の書き込み対象と文字数を確認する（書き込みなし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim args, hiveName, subKey, valueName, proposedValue
 Set args = WScript.Arguments

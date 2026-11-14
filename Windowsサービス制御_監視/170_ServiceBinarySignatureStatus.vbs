@@ -1,3 +1,9 @@
+' ファイル概要: サービス実行ファイルのローカル署名確認。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 170_ServiceBinarySignatureStatus.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: サービス実行ファイルのローカル署名確認処理の結果やエラーをコンソールに表示します。
+
 ' 指定サービスの実行ファイル署名状態をローカルで検証します。サービス設定は変更しません。
 Option Explicit
 Dim serviceName, validator, service, services, item, found, rawPath, executablePath, exePosition, quotePosition

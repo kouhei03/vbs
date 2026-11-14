@@ -1,3 +1,8 @@
+' ファイル概要: 一部ライセンス情報の末尾5文字（取扱注意）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 121_WindowsPartialProductKey.vbs
+' 実行結果: 一部ライセンス情報の末尾5文字（取扱注意）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

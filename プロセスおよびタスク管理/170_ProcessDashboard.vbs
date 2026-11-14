@@ -1,3 +1,9 @@
+' ファイル概要: プロセス一覧のローカルHTML出力。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 170_ProcessDashboard.vbs <new-html-path>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: プロセスの名前とPIDを新規HTMLファイルに保存し、処理結果を表示します。
+
 Option Explicit
 Dim fso, service, processes, process, report, path
 If WScript.Arguments.Count<>1 Then WScript.Echo "Usage: cscript //nologo 170_ProcessDashboard.vbs <new-html-path>": WScript.Quit 2

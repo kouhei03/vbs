@@ -1,3 +1,8 @@
+' ファイル概要: TPM搭載/有効状態。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 126_TpmStatus.vbs
+' 実行結果: TPM搭載/有効状態処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2\Security\MicrosoftTpm")

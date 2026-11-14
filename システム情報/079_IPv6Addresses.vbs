@@ -1,3 +1,8 @@
+' ファイル概要: IPv6アドレス割り当て。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 079_IPv6Addresses.vbs
+' 実行結果: IPv6アドレス割り当て処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, adapters, adapter, address, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")

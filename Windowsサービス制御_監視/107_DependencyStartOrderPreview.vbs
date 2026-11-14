@@ -1,3 +1,9 @@
+' ファイル概要: 必要サービスの起動順プレビュー（実行なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 107_DependencyStartOrderPreview.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 必要サービスの起動順プレビュー（実行なし）処理の結果やエラーをコンソールに表示します。
+
 ' 起動順の参考として、対象サービスが依存するサービスを表示します。起動は行いません。
 Option Explicit
 Dim serviceName, validator, service, relations, relation, marker, found

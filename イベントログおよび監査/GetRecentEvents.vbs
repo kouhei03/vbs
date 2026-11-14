@@ -1,3 +1,9 @@
+' ファイル概要: 指定したイベントログの履歴を表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetRecentEvents.vbs <System|Application|Security> <hours 1-168>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定したイベントログの履歴を表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim logName, hours, timeFilter, service, events, eventItem

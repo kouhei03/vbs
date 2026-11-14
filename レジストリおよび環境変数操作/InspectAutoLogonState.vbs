@@ -1,3 +1,8 @@
+' ファイル概要: 自動ログオンの状態とユーザー名を確認する（パスワードは取得しない）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectAutoLogonState.vbs
+' 実行結果: 自動ログオンの状態とユーザー名を確認する（パスワードは取得しない）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, autoLogon, userName
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

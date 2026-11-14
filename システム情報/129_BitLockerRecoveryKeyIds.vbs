@@ -1,3 +1,8 @@
+' ファイル概要: BitLocker回復キーID。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 129_BitLockerRecoveryKeyIds.vbs
+' 実行結果: BitLocker回復キーID処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line, commandLine
 Set shell = CreateObject("WScript.Shell")

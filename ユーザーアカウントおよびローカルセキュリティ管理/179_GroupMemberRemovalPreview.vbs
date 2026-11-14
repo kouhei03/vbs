@@ -1,3 +1,9 @@
+' ファイル概要: グループのメンバーを確認する（削除なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 179_GroupMemberRemovalPreview.vbs <local-group> <member>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: グループのメンバーを確認する（削除なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim groupName, userName, service, groups, group, members, member

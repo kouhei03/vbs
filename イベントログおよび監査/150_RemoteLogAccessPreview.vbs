@@ -1,3 +1,9 @@
+' ファイル概要: 接続先名を検証する（ネットワーク接続なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 150_RemoteLogAccessPreview.vbs <computer-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 接続先名を検証する（ネットワーク接続なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim computerName, pattern

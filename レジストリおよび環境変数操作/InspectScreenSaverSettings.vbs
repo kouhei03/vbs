@@ -1,3 +1,8 @@
+' ファイル概要: スクリーンセーバーの有効状態・タイムアウト・保護設定を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectScreenSaverSettings.vbs
+' 実行結果: スクリーンセーバーの有効状態・タイムアウト・保護設定を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, value, valueName
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

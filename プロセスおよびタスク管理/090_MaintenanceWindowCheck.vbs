@@ -1,3 +1,9 @@
+' ファイル概要: 保守時間帯の判定のみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 090_MaintenanceWindowCheck.vbs <start-minute-0-1439> <end-minute-0-1439>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 保守時間帯の判定のみ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim startMinute, endMinute, nowMinute, insideWindow
 If WScript.Arguments.Count <> 2 Then WScript.Echo "Usage: cscript //nologo 090_MaintenanceWindowCheck.vbs <start-minute-0-1439> <end-minute-0-1439>": WScript.Quit 2

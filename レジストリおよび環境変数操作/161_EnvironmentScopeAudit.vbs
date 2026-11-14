@@ -1,3 +1,8 @@
+' ファイル概要: 環境変数スコープとPATHの重複・欠落を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 161_EnvironmentScopeAudit.vbs
+' 実行結果: 環境変数スコープとPATHの重複・欠落を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim shell, fso, scopeName, environment, entry, separator, variableName

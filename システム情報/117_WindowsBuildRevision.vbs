@@ -1,3 +1,8 @@
+' ファイル概要: Windowsビルドとリビジョン。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 117_WindowsBuildRevision.vbs
+' 実行結果: Windowsビルドとリビジョン処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, systems, system, registry, result, revision
 Set service = GetObject("winmgmts:\\.\root\cimv2")

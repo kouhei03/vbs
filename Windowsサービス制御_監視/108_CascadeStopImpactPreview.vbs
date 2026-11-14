@@ -1,3 +1,9 @@
+' ファイル概要: 停止時に影響を受けるサービスの状態プレビュー（停止なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 108_CascadeStopImpactPreview.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 停止時に影響を受けるサービスの状態プレビュー（停止なし）処理の結果やエラーをコンソールに表示します。
+
 ' 停止した場合に影響を受け得る依存サービスを表示します。停止は行いません。
 Option Explicit
 Dim serviceName, validator, service, relations, relation, services, item, marker, found, stateText

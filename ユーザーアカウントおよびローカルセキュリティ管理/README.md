@@ -1,3 +1,7 @@
+> **ファイル概要:** ローカルアカウントとセキュリティの診断スクリプトの一覧。
+> **実行方法:** この文書を参照し、Windowsのコマンドプロンプトでこのフォルダーから `cscript //nologo ListLocalUsers.vbs` を実行。
+> **実行結果:** 例ではローカルユーザーの名前と状態がコンソールに表示されます。
+
 # Local account and security inspection
 
 These scripts are local, read-only inventory and status checks. Examples:

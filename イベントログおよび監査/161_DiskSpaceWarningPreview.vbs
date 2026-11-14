@@ -1,3 +1,9 @@
+' ファイル概要: ローカルディスクの空き容量をしきい値と比較する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 161_DiskSpaceWarningPreview.vbs <free-percent-threshold 1-50>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: ローカルディスクの空き容量をしきい値と比較する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim threshold, service, disks, disk, freePercent

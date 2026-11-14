@@ -1,3 +1,8 @@
+' ファイル概要: Plug and Playのイベントを表示する（デバイス識別子は非表示）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 163_UsbEventTimeline.vbs
+' 実行結果: Plug and Playのイベントを表示する（デバイス識別子は非表示）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim filter, service, events, eventItem

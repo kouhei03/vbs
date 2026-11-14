@@ -1,3 +1,8 @@
+' ファイル概要: プロセス集計サマリー。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 100_ProcessSummary.vbs
+' 実行結果: プロセス集計サマリー処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, processes, process, count, bytes
 Set service = GetObject("winmgmts:\\.\root\cimv2")

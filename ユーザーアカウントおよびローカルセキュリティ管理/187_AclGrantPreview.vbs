@@ -1,3 +1,9 @@
+' ファイル概要: アクセス権を付与する対象と権限を確認する（変更なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 187_AclGrantPreview.vbs <file-or-folder> <principal> <Read|Write>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: アクセス権を付与する対象と権限を確認する（変更なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim targetPath, principal, rights, fso

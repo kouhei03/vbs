@@ -1,3 +1,8 @@
+' ファイル概要: 隠しファイルと拡張子の表示設定を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectExplorerDisplaySettings.vbs
+' 実行結果: 隠しファイルと拡張子の表示設定を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, settingName, settingValue
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

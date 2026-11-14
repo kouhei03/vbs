@@ -1,3 +1,9 @@
+' ファイル概要: ユーザー環境変数の存在を確認する（削除なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectEnvironmentRemovalTarget.vbs <variable-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: ユーザー環境変数の存在を確認する（削除なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, environment, variableName, entry, separator, found
 If WScript.Arguments.Count <> 1 Then

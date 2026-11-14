@@ -1,3 +1,8 @@
+' ファイル概要: Windows Sandbox機能状態照会のみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 145_SandboxFeatureStatus.vbs
+' 実行結果: Windows Sandbox機能状態照会のみ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line
 Set shell = CreateObject("WScript.Shell")

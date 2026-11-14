@@ -1,3 +1,8 @@
+' ファイル概要: ユーザープロファイルのパスと状態を列挙する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 184_UserProfilePathStatus.vbs
+' 実行結果: ユーザープロファイルのパスと状態を列挙する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, profiles, profile

@@ -1,3 +1,8 @@
+' ファイル概要: メモリ規格と速度。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 058_MemoryStandardSpeed.vbs
+' 実行結果: メモリ規格と速度処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, modules, module, memoryTypeName
 Set service = GetObject("winmgmts:\\.\root\cimv2")

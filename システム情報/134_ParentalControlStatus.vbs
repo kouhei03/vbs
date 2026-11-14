@@ -1,3 +1,8 @@
+' ファイル概要: ペアレンタルコントロール設定有無。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 134_ParentalControlStatus.vbs
+' 実行結果: ペアレンタルコントロール設定有無処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, names, keyName
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

@@ -1,3 +1,8 @@
+' ファイル概要: セキュリティ製品関連サービスの状態確認。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 171_SecurityProductStatus.vbs
+' 実行結果: セキュリティ製品関連サービスの状態確認処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, services, item, wantedNames, wantedName, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")

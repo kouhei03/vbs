@@ -1,3 +1,8 @@
+' ファイル概要: IPv4アドレスとサブネット。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 078_IPv4Subnet.vbs
+' 実行結果: IPv4アドレスとサブネット処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, adapters, adapter, addresses, subnets, index, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")

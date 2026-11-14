@@ -1,3 +1,8 @@
+' ファイル概要: スプーラーサービス状態照会。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 130_PrintSpoolerStatus.vbs
+' 実行結果: スプーラーサービス状態照会処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, items, item
 Set service = GetObject("winmgmts:\\.\root\cimv2")

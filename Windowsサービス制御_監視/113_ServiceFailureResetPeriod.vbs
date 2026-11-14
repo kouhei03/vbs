@@ -1,3 +1,9 @@
+' ファイル概要: 失敗回数リセット期間の読み取り。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 113_ServiceFailureResetPeriod.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 失敗回数リセット期間の読み取り処理の結果やエラーをコンソールに表示します。
+
 ' サービス失敗回数のリセット期間を照会します。設定は変更しません。
 Option Explicit
 Dim serviceName, validator

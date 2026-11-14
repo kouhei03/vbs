@@ -1,3 +1,8 @@
+' ファイル概要: 固定PowerShell照会例。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 148_PowerShellDateOutput.vbs
+' 実行結果: 固定PowerShell照会例処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line
 Set shell=CreateObject("WScript.Shell")

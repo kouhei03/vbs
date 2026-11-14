@@ -1,3 +1,9 @@
+' ファイル概要: TEMP古いファイルの削除プレビューのみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 089_TempCleanupPreview.vbs [age-days]
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: TEMP古いファイルの削除プレビューのみ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim fso, shell, tempPath, folder, file, ageDays, cutoff, found
 If WScript.Arguments.Count > 1 Then WScript.Echo "Usage: cscript //nologo 089_TempCleanupPreview.vbs [age-days]": WScript.Quit 2

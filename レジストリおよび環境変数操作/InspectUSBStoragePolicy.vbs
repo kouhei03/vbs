@@ -1,3 +1,8 @@
+' ファイル概要: USBストレージの起動設定を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectUSBStoragePolicy.vbs
+' 実行結果: USBストレージの起動設定を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, startValue
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

@@ -1,3 +1,8 @@
+' ファイル概要: 筐体タイプ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 042_ChassisType.vbs
+' 実行結果: 筐体タイプ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, enclosures, enclosure, code, label
 Set service = GetObject("winmgmts:\\.\root\cimv2")

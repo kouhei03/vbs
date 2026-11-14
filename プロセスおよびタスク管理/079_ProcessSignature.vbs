@@ -1,3 +1,9 @@
+' ファイル概要: プロセス実行ファイルのAuthenticode署名状態。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 079_ProcessSignature.vbs <process.exe>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: プロセス実行ファイルのAuthenticode署名状態処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, process, processName, validator, shell, commandLine, psCommand, line, runner
 If WScript.Arguments.Count <> 1 Then WScript.Echo "Usage: cscript //nologo 079_ProcessSignature.vbs <process.exe>": WScript.Quit 2

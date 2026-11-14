@@ -1,3 +1,8 @@
+' ファイル概要: ログオン・ログオフイベントの件数を集計する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetLogonEventCounts.vbs
+' 実行結果: ログオン・ログオフイベントの件数を集計する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim timeFilter, service, events, eventItem, logonCount, logoffCount

@@ -1,3 +1,8 @@
+' ファイル概要: ローカル共有の名前・パス・種類を表示する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 191_NetworkShareInventory.vbs
+' 実行結果: ローカル共有の名前・パス・種類を表示する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, shares, share

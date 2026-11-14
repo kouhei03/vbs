@@ -1,3 +1,8 @@
+' ファイル概要: メモリエラー訂正情報。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 062_MemoryEcc.vbs
+' 実行結果: メモリエラー訂正情報処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, modules, module, dataWidth, totalWidth
 Set service = GetObject("winmgmts:\\.\root\cimv2")

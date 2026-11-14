@@ -1,3 +1,9 @@
+' ファイル概要: OSの診断概要を新規ローカルファイルに出力する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 170_SystemDiagnosticSummary.vbs <new-output-file>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: OS名・バージョン・ビルド・アーキテクチャ・起動時刻を新規ファイルに保存し、処理結果を表示します。
+
 Option Explicit
 
 Dim outputPath, fso, file, service, systems, systemItem

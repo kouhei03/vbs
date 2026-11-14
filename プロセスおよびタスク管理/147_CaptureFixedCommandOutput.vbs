@@ -1,3 +1,8 @@
+' ファイル概要: 固定コマンドの出力/エラー取得例。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 147_CaptureFixedCommandOutput.vbs
+' 実行結果: 固定コマンドの出力/エラー取得例処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, outputText, errorText
 Set shell=CreateObject("WScript.Shell")

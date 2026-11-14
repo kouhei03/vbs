@@ -1,3 +1,8 @@
+' ファイル概要: DNSサーバー設定。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 081_DnsServers.vbs
+' 実行結果: DNSサーバー設定処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

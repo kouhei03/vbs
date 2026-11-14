@@ -1,3 +1,8 @@
+' ファイル概要: ページファイル割り当てと配置。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 061_PageFileAllocation.vbs
+' 実行結果: ページファイル割り当てと配置処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")

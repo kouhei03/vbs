@@ -1,3 +1,9 @@
+' ファイル概要: しきい値超過判定用データ（通知なし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 064_MemoryThresholdData.vbs [threshold-percent]
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: しきい値超過判定用データ（通知なし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, systems, memories, system, memory, totalBytes, availableBytes, threshold, usedPercent, hasTotal, hasAvailable
 If WScript.Arguments.Count > 1 Then

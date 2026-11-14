@@ -1,3 +1,8 @@
+' ファイル概要: 現在のユーザーのタスクマネージャー制限値を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectTaskManagerPolicy.vbs
+' 実行結果: 現在のユーザーのタスクマネージャー制限値を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, disabled
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

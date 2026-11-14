@@ -1,3 +1,8 @@
+' ファイル概要: VPNアダプター状態照会のみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 124_VpnAdapterStatus.vbs
+' 実行結果: VPNアダプター状態照会のみ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, adapters, adapter, label
 Set service = GetObject("winmgmts:\\.\root\cimv2")

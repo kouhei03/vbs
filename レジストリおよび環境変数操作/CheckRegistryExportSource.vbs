@@ -1,3 +1,9 @@
+' ファイル概要: レジストリキーの読み取り可否を確認する（エクスポートなし）。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo CheckRegistryExportSource.vbs <hive> <subkey>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: レジストリキーの読み取り可否を確認する（エクスポートなし）処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, hiveName, hive, subKey, result, names, types
 If WScript.Arguments.Count <> 2 Then

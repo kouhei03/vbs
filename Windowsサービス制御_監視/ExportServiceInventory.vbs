@@ -1,3 +1,9 @@
+' ファイル概要: サービスの状態と開始方法をCSVに出力する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo ExportServiceInventory.vbs <new-csv-path>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: サービス一覧のCSVファイルを新規作成し、処理結果を表示します。
+
 Option Explicit
 
 Dim service, services, item, fileSystem, outputPath, outputFile

@@ -1,3 +1,8 @@
+' ファイル概要: 無効サービスの復旧検討用一覧。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 122_DisabledServicesRestorePreview.vbs
+' 実行結果: 無効サービスの復旧検討用一覧処理の結果やエラーをコンソールに表示します。
+
 ' 無効状態のサービスを列挙し、復旧検討用の情報を表示します。設定は変更しません。
 Option Explicit
 Dim service, services, item, count

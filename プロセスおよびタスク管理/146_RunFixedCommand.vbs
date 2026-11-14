@@ -1,3 +1,9 @@
+' ファイル概要: 固定コマンドの同期/非同期呼び出し例。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 146_RunFixedCommand.vbs <sync|async>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 固定コマンドの同期/非同期呼び出し例処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, waitForExit, result, mode
 If WScript.Arguments.Count<>1 Then WScript.Echo "Usage: cscript //nologo 146_RunFixedCommand.vbs <sync|async>": WScript.Quit 2

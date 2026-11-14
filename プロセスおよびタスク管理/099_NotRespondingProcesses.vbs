@@ -1,3 +1,8 @@
+' ファイル概要: 応答なしプロセス検出のみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 099_NotRespondingProcesses.vbs
+' 実行結果: 応答なしプロセス検出のみ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, process, line, found
 Set shell = CreateObject("WScript.Shell")

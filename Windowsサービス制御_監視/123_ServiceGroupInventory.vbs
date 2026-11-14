@@ -1,3 +1,8 @@
+' ファイル概要: サービスグループ情報の一覧。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 123_ServiceGroupInventory.vbs
+' 実行結果: サービスグループ情報の一覧処理の結果やエラーをコンソールに表示します。
+
 ' サービスごとのServiceGroupレジストリ値を読み取ります。レジストリは変更しません。
 Option Explicit
 Dim service, services, item, shell, registryPath, groupName

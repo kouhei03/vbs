@@ -1,3 +1,9 @@
+' ファイル概要: 段階的間隔での状態観察のみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 187_ServiceBackoffObservation.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 段階的間隔での状態観察のみ処理の結果やエラーをコンソールに表示します。
+
 ' 指定サービスの状態を、最大5回の段階的間隔で観察します。再起動はしません。
 Option Explicit
 Dim serviceName, validator, service, services, item, attempt, delaySeconds, found

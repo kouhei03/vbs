@@ -1,3 +1,8 @@
+' ファイル概要: 統合/外部GPU識別用情報。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 094_GpuTypeIdentifiers.vbs
+' 実行結果: 統合/外部GPU識別用情報処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, adapters, adapter, identity, classification
 Set service = GetObject("winmgmts:\\.\root\cimv2")

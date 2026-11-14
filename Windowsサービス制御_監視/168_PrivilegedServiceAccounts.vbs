@@ -1,3 +1,8 @@
+' ファイル概要: 組み込みサービスアカウント使用サービスの確認。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 168_PrivilegedServiceAccounts.vbs
+' 実行結果: 組み込みサービスアカウント使用サービスの確認処理の結果やエラーをコンソールに表示します。
+
 ' 組み込みサービスアカウントで実行されるサービス名を照会します。設定変更はしません。
 Option Explicit
 Dim service, services, item, accountName

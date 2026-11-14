@@ -1,3 +1,9 @@
+' ファイル概要: 基本サービス構成情報の読み取り。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 120_ServiceConfigurationReadOnly.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 基本サービス構成情報の読み取り処理の結果やエラーをコンソールに表示します。
+
 ' ローカルサービス構成の基本情報を読み取ります。
 Option Explicit
 Dim serviceName, validator

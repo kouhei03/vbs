@@ -1,3 +1,8 @@
+' ファイル概要: キーボードとポインティングデバイスを列挙する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetInputDevices.vbs
+' 実行結果: キーボードとポインティングデバイスを列挙する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, devices, device

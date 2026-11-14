@@ -1,3 +1,9 @@
+' ファイル概要: 遅延自動開始レジストリ値の読み取り。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 109_DelayedAutoStartStatus.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 遅延自動開始レジストリ値の読み取り処理の結果やエラーをコンソールに表示します。
+
 ' 指定サービスのDelayedAutoStartレジストリ値を読み取り専用で表示します。
 Option Explicit
 Dim serviceName, validator, shell, registryPath, delayedValue

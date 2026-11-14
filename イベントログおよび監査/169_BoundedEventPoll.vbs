@@ -1,3 +1,9 @@
+' ファイル概要: 指定したシステムイベントを最大5分間監視する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 169_BoundedEventPoll.vbs <event-id> <minutes 1-5> <interval-seconds 5-30>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定したシステムイベントを最大5分間監視する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim eventId, minutes, intervalSeconds, service, filter, events

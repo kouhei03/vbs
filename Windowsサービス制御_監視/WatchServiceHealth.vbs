@@ -1,3 +1,9 @@
+' ファイル概要: 指定サービスの状態を指定時間にわたり監視する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo WatchServiceHealth.vbs <service-name> <interval-seconds 5-300> <duration-seconds 5-3600>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定サービスの状態を指定時間にわたり監視する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, services, item, serviceName, intervalText, durationText

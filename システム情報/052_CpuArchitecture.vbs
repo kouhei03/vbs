@@ -1,3 +1,8 @@
+' ファイル概要: CPUアーキテクチャ詳細。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 052_CpuArchitecture.vbs
+' 実行結果: CPUアーキテクチャ詳細処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, processors, processor, architectureName
 Set service = GetObject("winmgmts:\\.\root\cimv2")

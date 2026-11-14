@@ -1,3 +1,8 @@
+' ファイル概要: シェルのコンテキストメニュー登録キーを列挙する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectContextMenuEntries.vbs
+' 実行結果: シェルのコンテキストメニュー登録キーを列挙する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim registry, result, names, subKey, item, child
 Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")

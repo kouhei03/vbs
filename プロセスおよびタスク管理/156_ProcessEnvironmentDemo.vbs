@@ -1,3 +1,8 @@
+' ファイル概要: プロセススコープ環境変数のデモ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 156_ProcessEnvironmentDemo.vbs
+' 実行結果: プロセススコープ環境変数のデモ処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim shell, environment
 Set shell=CreateObject("WScript.Shell")

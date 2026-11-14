@@ -1,3 +1,8 @@
+' ファイル概要: WMIクラス利用可否の互換性確認。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 204_WmiServiceCompatibility.vbs
+' 実行結果: WMIクラス利用可否の互換性確認処理の結果やエラーをコンソールに表示します。
+
 ' 必要なWMIクラスへのアクセス可否を照会し、互換性確認の簡単な結果を出します。
 Option Explicit
 Dim service, services, relations

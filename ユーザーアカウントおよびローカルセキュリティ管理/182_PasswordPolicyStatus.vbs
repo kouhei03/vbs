@@ -1,3 +1,8 @@
+' ファイル概要: net accountsでローカルアカウントポリシーを照会する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 182_PasswordPolicyStatus.vbs
+' 実行結果: net accountsでローカルアカウントポリシーを照会する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim shell, process, output, errorOutput, netPath

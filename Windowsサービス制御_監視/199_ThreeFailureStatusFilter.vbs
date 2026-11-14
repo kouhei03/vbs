@@ -1,3 +1,9 @@
+' ファイル概要: 連続3回の状態確認フィルターのみ。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 199_ThreeFailureStatusFilter.vbs <service-name>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 連続3回の状態確認フィルターのみ処理の結果やエラーをコンソールに表示します。
+
 ' 連続3回の非実行状態をコンソールで検知します。自動復旧や通知送信は行いません。
 Option Explicit
 Dim serviceName, validator, service, services, item, failures, sample, found

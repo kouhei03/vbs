@@ -1,3 +1,9 @@
+' ファイル概要: 指定プロセスの所有者。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 077_ProcessOwner.vbs <process.exe>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定プロセスの所有者処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, processName, validator, records, process, fieldName, value, userName, domainName, result
 If WScript.Arguments.Count <> 1 Then

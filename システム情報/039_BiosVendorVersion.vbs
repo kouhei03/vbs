@@ -1,3 +1,8 @@
+' ファイル概要: BIOSベンダーとバージョン。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 039_BiosVendorVersion.vbs
+' 実行結果: BIOSベンダーとバージョン処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 Dim service, records, record, fieldName, fieldValue, arrayItem, joinedValue
 Set service = GetObject("winmgmts:\\.\root\cimv2")
