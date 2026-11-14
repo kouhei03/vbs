@@ -1,7 +1,13 @@
+' ファイル概要: プロセスごとの物理・仮想メモリ使用量を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetProcessMemoryUsage.vbs
+' 実行結果: プロセスごとの物理・仮想メモリ使用量を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, processes, process
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Process を照会し、Name, ProcessId, WorkingSetSize, VirtualSize を取得します。
 Set processes = service.ExecQuery( _
     "SELECT Name, ProcessId, WorkingSetSize, VirtualSize FROM Win32_Process")
 

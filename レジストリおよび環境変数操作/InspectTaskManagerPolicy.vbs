@@ -1,0 +1,19 @@
+' ファイル概要: 現在のユーザーのタスクマネージャー制限値を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo InspectTaskManagerPolicy.vbs
+' 実行結果: 現在のユーザーのタスクマネージャー制限値を確認する処理の結果やエラーをコンソールに表示します。
+
+Option Explicit
+Dim registry, result, disabled
+Set registry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 指定した型のレジストリ値をStdRegProvから取得します。
+result = registry.GetDWORDValue(&H80000001, "Software\Microsoft\Windows\CurrentVersion\Policies\System", "DisableTaskMgr", disabled)
+If result = 0 Then
+    WScript.Echo "DisableTaskMgr=" & disabled
+ElseIf result = 2 Then
+    WScript.Echo "DisableTaskMgr is not set."
+Else
+    WScript.Echo "Registry read failed with WMI return code: " & result
+    WScript.Quit 1
+End If
+WScript.Echo "No policy value was changed."

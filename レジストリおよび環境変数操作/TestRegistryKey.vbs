@@ -1,14 +1,22 @@
+' ファイル概要: 指定レジストリキーの存在と読み取り可否を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo TestRegistryKey.vbs <HKCU|HKLM|HKCR|HKU|HKCC> <subkey>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定レジストリキーの存在と読み取り可否を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim registry, hiveName, hive, subKey, parentKey, childKey
 Dim separator, result, children, child, found
 
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
 If WScript.Arguments.Count <> 2 Then
     WScript.Echo "Usage: cscript //nologo TestRegistryKey.vbs <HKCU|HKLM|HKCR|HKU|HKCC> <subkey>"
     WScript.Quit 2
 End If
 
 hiveName = UCase(WScript.Arguments(0))
+' [処理解説] 入力されたハイブ名をStdRegProvで使用する定数に対応付けます。
 Select Case hiveName
     Case "HKCU": hive = &H80000001
     Case "HKLM": hive = &H80000002
@@ -37,6 +45,7 @@ End If
 
 Set registry = GetObject( _
     "winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+' [処理解説] 指定キーの直下のサブキーを列挙します。再帰的な走査ではありません。
 result = registry.EnumKey(hive, parentKey, children)
 
 If result <> 0 Then

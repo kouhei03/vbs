@@ -1,7 +1,13 @@
+' ファイル概要: ローカルディスクの容量と空き容量を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetPartitionUsage.vbs
+' 実行結果: ローカルディスクの容量と空き容量を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, drives, drive, usedBytes, usedPercent
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_LogicalDisk を照会し、DeviceID, Size, FreeSpace を取得します。
 Set drives = service.ExecQuery( _
     "SELECT DeviceID, Size, FreeSpace FROM Win32_LogicalDisk WHERE DriveType=3")
 

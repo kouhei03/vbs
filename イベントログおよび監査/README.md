@@ -1,3 +1,7 @@
+> **ファイル概要:** イベントログと監査のスクリプトの一覧と利用条件。
+> **実行方法:** この文書を参照し、Windowsのコマンドプロンプトでこのフォルダーから `cscript //nologo GetRecentEvents.vbs System 24` を実行。
+> **実行結果:** 例では指定したイベントログの時刻、ID、ソースなどがコンソールに表示されます。
+
 # Windows event log diagnostics
 
 The scripts in this directory perform local, read-only event-log queries.
@@ -27,3 +31,48 @@ and report standard crash-dump file presence.
 These scripts do not write to, clear, back up, or remotely access event logs;
 change audit policy; run continuously; or collect dump files. Dump inspection
 only reports whether standard dump files are present.
+
+## Additional examples (items 141-170)
+
+Each numbered item has its own script. Existing general-purpose diagnostics
+remain available; these numbered files provide bounded examples. Operations
+that write or clear event logs, export the Security log, access remote logs,
+delete or compress files, or collect dump contents are intentionally replaced
+with read-only checks or previews.
+
+| No. | Script | Behavior |
+|---:|---|---|
+| 141 | `141_LatestEventSummary.vbs` | Prints up to 20 event metadata rows from the last 24 hours. |
+| 142 | `142_FilterEventsById.vbs` | Filters a local standard log by event ID and bounded time range. |
+| 143 | `143_ApplicationErrorDetector.vbs` | Lists Application events 1000/1001 from the last 24 hours. |
+| 144 | `144_CustomEventWritePreview.vbs` | Validates an event source, ID, and message length without writing. |
+| 145 | `145_EventSeverityWritePreview.vbs` | Previews Information/Warning input without writing an event. |
+| 146 | `146_EventLogClearPreflight.vbs` | Shows log size and retention metadata; never clears the log. |
+| 147 | `147_EventLogPolicyStatus.vbs` | Lists local event log size and overwrite settings. |
+| 148 | `148_CriticalEventConsoleAlert.vbs` | Prints recent System error alerts to the console only. |
+| 149 | `149_ErrorCount24Hours.vbs` | Counts System and Application errors from the last 24 hours. |
+| 150 | `150_RemoteLogAccessPreview.vbs` | Validates a target name; makes no network connection. |
+| 151 | `151_AuditPolicyStatus.vbs` | Reads local audit policy with `auditpol /get`. |
+| 152 | `152_BootShutdownTimeline.vbs` | Lists selected boot and shutdown event metadata. |
+| 153 | `153_LogonLogoffTimeline.vbs` | Lists logon/logoff event IDs and times without account details. |
+| 154 | `154_FailedLogonTrend.vbs` | Counts failed logons without displaying account or address data. |
+| 155 | `155_SecurityLogBackupPreflight.vbs` | Checks Security log metadata; does not export or back it up. |
+| 156 | `156_RunLifecycleConsoleLog.vbs` | Prints script start/end times; does not create an event source. |
+| 157 | `157_MemoryDumpStatus.vbs` | Reports standard MEMORY.DMP metadata without opening the dump. |
+| 158 | `158_MiniDumpInventory.vbs` | Lists minidump metadata; does not move or copy files. |
+| 159 | `159_MsiErrorSummary.vbs` | Lists recent Windows Installer error metadata. |
+| 160 | `160_BackupOutcomeSummary.vbs` | Lists backup-related event metadata for review. |
+| 161 | `161_DiskSpaceWarningPreview.vbs` | Compares local disk free space to a threshold; console only. |
+| 162 | `162_NetworkChangeTimeline.vbs` | Lists selected local network-change event metadata. |
+| 163 | `163_UsbEventTimeline.vbs` | Lists Plug and Play event metadata without device identifiers. |
+| 164 | `164_TaskSchedulerErrorSummary.vbs` | Lists selected Task Scheduler operational error IDs. |
+| 165 | `165_SanitizedErrorSummary.vbs` | Redacts common secret fields from supplied error text. |
+| 166 | `166_LogRotationPreflight.vbs` | Counts old files and bytes; does not compress or delete. |
+| 167 | `167_MaskSensitiveLogText.vbs` | Masks common secret fields in supplied text. |
+| 168 | `168_ServerCollectionScopePreview.vbs` | Validates a server-list file; does not contact servers. |
+| 169 | `169_BoundedEventPoll.vbs` | Polls a local System event ID for at most five minutes. |
+| 170 | `170_SystemDiagnosticSummary.vbs` | Creates a new local OS summary file; does not export logs or credentials. |
+
+Security log reads may require elevated permissions and configured auditing.
+The bounded poll is finite and stops automatically; it is not a resident
+monitor.

@@ -1,8 +1,14 @@
+' ファイル概要: SQL ServerとIISのサービス状態を確認する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo CheckMiddlewareServices.vbs
+' 実行結果: SQL ServerとIISのサービス状態を確認する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, services, item
 Dim matched, upperName
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, State を取得します。
 Set services = service.ExecQuery( _
     "SELECT Name, DisplayName, State FROM Win32_Service")
 

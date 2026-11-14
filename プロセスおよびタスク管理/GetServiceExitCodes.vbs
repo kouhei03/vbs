@@ -1,7 +1,13 @@
+' ファイル概要: サービスの終了コードを取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetServiceExitCodes.vbs
+' 実行結果: サービスの終了コードを取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, services, item
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, State, ExitCode, ServiceSpecificExitCode を取得します。
 Set services = service.ExecQuery( _
     "SELECT Name, State, ExitCode, ServiceSpecificExitCode FROM Win32_Service")
 

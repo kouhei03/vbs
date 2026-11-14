@@ -1,7 +1,13 @@
+' ファイル概要: ドメインまたはワークグループへの参加状態を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetDomainStatus.vbs
+' 実行結果: ドメインまたはワークグループへの参加状態を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, systems, system
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_ComputerSystem を照会し、PartOfDomain, Domain, Workgroup を取得します。
 Set systems = service.ExecQuery( _
     "SELECT PartOfDomain, Domain, Workgroup FROM Win32_ComputerSystem")
 

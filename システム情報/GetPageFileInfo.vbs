@@ -1,8 +1,14 @@
+' ファイル概要: ページファイルの構成を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetPageFileInfo.vbs
+' 実行結果: ページファイルの構成を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, settings, setting, usages, usage, found
 Set service = GetObject("winmgmts:\\.\root\cimv2")
 
+' [処理解説] WMIの Win32_PageFileSetting を照会し、Name, InitialSize, MaximumSize を取得します。
 Set settings = service.ExecQuery( _
     "SELECT Name, InitialSize, MaximumSize FROM Win32_PageFileSetting")
 found = False
@@ -14,6 +20,7 @@ For Each setting In settings
 Next
 If Not found Then WScript.Echo "No explicit page file settings returned (possibly system-managed)."
 
+' [処理解説] WMIの Win32_PageFileUsage を照会し、Name, AllocatedBaseSize, CurrentUsage, PeakUsage を取得します。
 Set usages = service.ExecQuery( _
     "SELECT Name, AllocatedBaseSize, CurrentUsage, PeakUsage FROM Win32_PageFileUsage")
 For Each usage In usages

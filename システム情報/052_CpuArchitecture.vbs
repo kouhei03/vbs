@@ -1,0 +1,22 @@
+' ファイル概要: CPUアーキテクチャ詳細。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 052_CpuArchitecture.vbs
+' 実行結果: CPUアーキテクチャ詳細処理の結果やエラーをコンソールに表示します。
+
+Option Explicit
+Dim service, processors, processor, architectureName
+Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Processor を照会し、Architecture, AddressWidth, DataWidth を取得します。
+Set processors = service.ExecQuery("SELECT Architecture, AddressWidth, DataWidth FROM Win32_Processor")
+For Each processor In processors
+    Select Case processor.Architecture
+        Case 0: architectureName = "x86"
+        Case 5: architectureName = "ARM"
+        Case 9: architectureName = "x64"
+        Case 12: architectureName = "ARM64"
+        Case 6: architectureName = "Itanium"
+        Case Else: architectureName = "Unknown (" & processor.Architecture & ")"
+    End Select
+    WScript.Echo "Architecture=" & architectureName
+    WScript.Echo "AddressWidth=" & processor.AddressWidth & " DataWidth=" & processor.DataWidth
+Next

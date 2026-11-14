@@ -1,7 +1,13 @@
+' ファイル概要: ディスプレイアダプターと解像度を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetDisplayInfo.vbs
+' 実行結果: ディスプレイアダプターと解像度を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, controllers, controller
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_VideoController を照会し、Name, CurrentHorizontalResolution, CurrentVerticalResolution を取得します。
 Set controllers = service.ExecQuery( _
     "SELECT Name, CurrentHorizontalResolution, CurrentVerticalResolution " & _
     "FROM Win32_VideoController")

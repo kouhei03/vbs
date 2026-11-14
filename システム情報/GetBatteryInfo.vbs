@@ -1,7 +1,13 @@
+' ファイル概要: バッテリーの残量と状態を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetBatteryInfo.vbs
+' 実行結果: バッテリーの残量と状態を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, batteries, battery, found, batteryState
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Battery を照会し、EstimatedChargeRemaining, BatteryStatus, Status を取得します。
 Set batteries = service.ExecQuery( _
     "SELECT EstimatedChargeRemaining, BatteryStatus, Status FROM Win32_Battery")
 

@@ -1,0 +1,63 @@
+' ファイル概要: 指定したシステムイベントを最大5分間監視する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo 169_BoundedEventPoll.vbs <event-id> <minutes 1-5> <interval-seconds 5-30>
+'   <>は必須引数、[]は省略可能な引数を示します。値を置き換えて入力してください。
+' 実行結果: 指定したシステムイベントを最大5分間監視する処理の結果やエラーをコンソールに表示します。
+
+Option Explicit
+
+Dim eventId, minutes, intervalSeconds, service, filter, events
+Dim eventItem, elapsed, count, previousCount
+' [処理解説] 必要な引数の数が合わない場合、使い方を表示して終了します。
+If WScript.Arguments.Count <> 3 Then
+    WScript.Echo "Usage: cscript //nologo 169_BoundedEventPoll.vbs <event-id> <minutes 1-5> <interval-seconds 5-30>"
+    WScript.Quit 2
+End If
+If Not ParseInteger(WScript.Arguments(0), 0, 65535, eventId) Then
+    WScript.Echo "Event ID must be an integer from 0 to 65535."
+    WScript.Quit 2
+End If
+If Not ParseInteger(WScript.Arguments(1), 1, 5, minutes) Then
+    WScript.Echo "Minutes must be from 1 to 5."
+    WScript.Quit 2
+End If
+If Not ParseInteger(WScript.Arguments(2), 5, 30, intervalSeconds) Then
+    WScript.Echo "Interval must be from 5 to 30 seconds."
+    WScript.Quit 2
+End If
+
+Set service = GetObject("winmgmts:\\.\root\cimv2")
+previousCount = -1
+For elapsed = 0 To minutes * 60 Step intervalSeconds
+    Set filter = CreateObject("WbemScripting.SWbemDateTime")
+    ' [処理解説] 指定した期間の開始時刻をWMIの日時形式に変換して照会条件に使用します。
+    filter.SetVarDate DateAdd("s", -elapsed, Now), True
+    ' [処理解説] WMIの Win32_NTLogEvent を照会し、EventCode を取得します。
+    Set events = service.ExecQuery( _
+        "SELECT EventCode FROM Win32_NTLogEvent WHERE Logfile='System' " & _
+        "AND EventCode=" & eventId & " AND TimeGenerated >= '" & filter.Value & "'")
+    count = 0
+    For Each eventItem In events
+        count = count + 1
+    Next
+    If count <> previousCount Then
+        WScript.Echo "Elapsed seconds=" & elapsed & "; matching events in window=" & count
+        previousCount = count
+    End If
+    ' [処理解説] 次の処理まで指定されたミリ秒だけ待機します。
+    If elapsed < minutes * 60 Then WScript.Sleep intervalSeconds * 1000
+Next
+WScript.Echo "Bounded observation ended."
+
+' [処理解説] 数字以外の入力を除外してから整数へ変換し、指定範囲に収まるか判定します。
+Function ParseInteger(text, minimum, maximum, value)
+    Dim i, character
+    ParseInteger = False
+    If Len(text) = 0 Or Len(text) > 5 Then Exit Function
+    For i = 1 To Len(text)
+        character = Mid(text, i, 1)
+        If InStr(1, "0123456789", character, vbBinaryCompare) = 0 Then Exit Function
+    Next
+    value = CLng(text)
+    ParseInteger = (value >= minimum And value <= maximum)
+End Function

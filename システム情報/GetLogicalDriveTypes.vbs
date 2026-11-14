@@ -1,7 +1,13 @@
+' ファイル概要: 論理ドライブとその種類を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetLogicalDriveTypes.vbs
+' 実行結果: 論理ドライブとその種類を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, drives, drive, driveType
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_LogicalDisk を照会し、DeviceID, DriveType を取得します。
 Set drives = service.ExecQuery( _
     "SELECT DeviceID, DriveType FROM Win32_LogicalDisk")
 

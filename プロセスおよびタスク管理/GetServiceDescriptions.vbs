@@ -1,7 +1,13 @@
+' ファイル概要: サービスの表示名と説明を取得する。
+' 実行方法: Windowsのコマンドプロンプトで、このファイルのフォルダーから以下を実行。
+'   cscript //nologo GetServiceDescriptions.vbs
+' 実行結果: サービスの表示名と説明を取得する処理の結果やエラーをコンソールに表示します。
+
 Option Explicit
 
 Dim service, services, item, description
 Set service = GetObject("winmgmts:\\.\root\cimv2")
+' [処理解説] WMIの Win32_Service を照会し、Name, DisplayName, Description を取得します。
 Set services = service.ExecQuery( _
     "SELECT Name, DisplayName, Description FROM Win32_Service")
 
